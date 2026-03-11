@@ -1,6 +1,7 @@
-Options -Indexes
+Options -Indexes +FollowSymLinks
 
 RewriteEngine On
+RewriteBase /
 
 # Evita o loop infinito se o arquivo ou diretório existir
 RewriteCond %{REQUEST_FILENAME} !-f
