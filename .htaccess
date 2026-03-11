@@ -1,11 +1,15 @@
-Options -Indexes -MultiViews +FollowSymLinks
+<IfModule mod_rewrite.c>
+    Options -Indexes -MultiViews +FollowSymLinks
+    RewriteEngine On
+    RewriteBase /
 
-RewriteEngine On
-RewriteBase /
+    # If the file or directory exists, use it
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
 
-# If the file or directory exists, use it
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+    # Otherwise, route to index.php
+    RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+</IfModule>
 
-# Otherwise, route to index.php
-RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+# Workaround for servers where mod_rewrite is problematic
+DirectoryIndex index.php
