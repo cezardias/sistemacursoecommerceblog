@@ -4,8 +4,8 @@
 class Database
 {
     private $host = "localhost";
-    private $db_name = "aula_direta";
-    private $username = "auladireta";
+    private $db_name = "rena5830_aula_direta";
+    private $username = "rena5830_auladireta";
     private $password = "4ul4diret4";
     public $conn;
 
