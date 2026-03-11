@@ -16,6 +16,13 @@ $total_revenue = $vendas_data['revenue'] ?? 0;
 $query_cursos_list = "SELECT * FROM cursos LIMIT 5";
 $stmt_cursos = $db->query($query_cursos_list);
 $recent_cursos = $stmt_cursos->fetchAll(PDO::FETCH_ASSOC);
+
+// Blog Metrics
+$query_posts = "SELECT COUNT(*) as total FROM blog_posts";
+$total_posts = $db->query($query_posts)->fetch(PDO::FETCH_ASSOC)['total'];
+
+$query_pendente = "SELECT COUNT(*) as total FROM comentarios WHERE status = 'pendente'";
+$pendente_comments = $db->query($query_pendente)->fetch(PDO::FETCH_ASSOC)['total'];
 ?>
 
 <div class="bg-gray-100 min-h-screen">
@@ -28,12 +35,17 @@ $recent_cursos = $stmt_cursos->fetchAll(PDO::FETCH_ASSOC);
                 <p class="text-gray-500">Bem-vindo ao painel administrativo da Aula Direta.</p>
             </div>
             <div class="flex space-x-4">
-                <button
-                    class="bg-white text-navy px-6 py-2 rounded-xl border border-gray-200 font-bold hover:bg-gray-50 transition">Exportar
-                    Relatórios</button>
-                <button
-                    class="bg-orange text-white px-6 py-2 rounded-xl font-bold hover-bg-orange transition shadow-lg">+
-                    Novo Curso</button>
+                <a href="/admin?view=blog"
+                    class="bg-navy text-white px-6 py-2 rounded-xl font-bold hover:bg-orange transition shadow-lg">Gerenciar
+                    Blog</a>
+                <a href="/admin?view=comments"
+                    class="bg-white text-navy px-6 py-2 rounded-xl border border-gray-200 font-bold hover:bg-gray-50 transition relative">
+                    Comentários
+                    <?php if ($pendente_comments > 0): ?>
+                        <span
+                            class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full"><?php echo $pendente_comments; ?></span>
+                    <?php endif; ?>
+                </a>
             </div>
         </div>
 
@@ -91,8 +103,9 @@ $recent_cursos = $stmt_cursos->fetchAll(PDO::FETCH_ASSOC);
                         </svg>
                     </div>
                 </div>
-                <h3 class="text-4xl font-extrabold text-navy">154</h3>
-                <p class="mt-4 text-gray-500 text-sm">Novos comentários para moderar</p>
+                <h3 class="text-4xl font-extrabold text-navy"><?php echo $total_posts; ?></h3>
+                <p class="mt-4 text-gray-500 text-sm"><?php echo $pendente_comments; ?> novos comentários para moderar
+                </p>
             </div>
         </div>
 
