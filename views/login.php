@@ -8,13 +8,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
     require_once 'models/User.php';
     $userModel = new User($db);
 
-    if ($userModel->login($_POST['email'], $_POST['senha'])) {
-        $_SESSION['user_id'] = $userModel->id;
-        $_SESSION['user_nome'] = $userModel->nome;
-        $_SESSION['user_nivel'] = $userModel->nivel;
+    $result = $userModel->login($_POST['email'], $_POST['senha']);
+    if (is_array($result)) {
+        $_SESSION['user_id'] = $result['id'];
+        $_SESSION['user_nome'] = $result['nome'];
+        $_SESSION['user_nivel'] = $result['nivel'];
 
         header('Location: /admin');
         exit();
+    } elseif (is_string($result)) {
+        $error = $result;
     } else {
         $error = "Credenciais inválidas.";
     }

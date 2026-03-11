@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
     `email` VARCHAR(100) NOT NULL UNIQUE,
     `senha` VARCHAR(255) NOT NULL,
     `nivel` ENUM('cliente', 'admin') DEFAULT 'cliente',
+    `status` ENUM('ativo', 'bloqueado') DEFAULT 'ativo',
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
@@ -47,6 +48,8 @@ CREATE TABLE IF NOT EXISTS `blog_posts` (
     `conteudo` TEXT NOT NULL,
     `autor_id` INT NOT NULL,
     `imagem` VARCHAR(255),
+    `status` ENUM('rascunho', 'publicado') DEFAULT 'rascunho',
+    `categoria` VARCHAR(100),
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT `fk_blog_autor` FOREIGN KEY (`autor_id`) REFERENCES `usuarios`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB;
@@ -56,6 +59,7 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
     `post_id` INT NOT NULL,
     `usuario_id` INT NOT NULL,
     `comentario` TEXT NOT NULL,
+    `resposta_admin` TEXT,
     `status` ENUM('pendente', 'aprovado') DEFAULT 'pendente',
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT `fk_comentario_post` FOREIGN KEY (`post_id`) REFERENCES `blog_posts`(`id`) ON DELETE CASCADE,

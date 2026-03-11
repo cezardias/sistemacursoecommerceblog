@@ -38,21 +38,42 @@ switch ($url) {
         include 'views/register.php';
         break;
 
+    case 'logout':
+        session_destroy();
+        header('Location: /home');
+        break;
+
+    case 'blog':
+        include 'views/blog.php';
+        break;
+
+    case 'post':
+        if (isset($_GET['slug'])) {
+            include 'views/blog_post.php';
+        } else {
+            header('Location: /blog');
+        }
+        break;
+
     case 'admin':
         if (isset($_SESSION['user_id'])) {
+            $view = isset($_GET['view']) ? $_GET['view'] : 'dashboard';
             if ($_SESSION['user_nivel'] == 'admin') {
-                include 'views/dashboard_admin.php';
+                if ($view == 'blog') {
+                    include 'views/admin_blog.php';
+                } elseif ($view == 'blog_form') {
+                    include 'views/admin_blog_form.php';
+                } elseif ($view == 'comments') {
+                    include 'views/admin_comments.php';
+                } else {
+                    include 'views/dashboard_admin.php';
+                }
             } else {
                 include 'views/dashboard_client.php';
             }
         } else {
             header('Location: /login');
         }
-        break;
-
-    case 'logout':
-        session_destroy();
-        header('Location: /home');
         break;
 
     case 'cart':

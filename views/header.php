@@ -63,7 +63,7 @@
             <div class="hidden md:flex space-x-8 items-center font-medium">
                 <a href="/home#cursos" class="hover:text-orange transition text-navy">Cursos</a>
                 <a href="#" class="hover:text-orange transition text-navy">EJA</a>
-                <a href="#" class="hover:text-orange transition text-navy">Blog</a>
+                <a href="/blog" class="hover:text-orange transition text-navy">Blog</a>
 
                 <a href="/cart" class="relative group">
                     <svg class="w-6 h-6 text-navy group-hover:text-orange transition" fill="none" stroke="currentColor"

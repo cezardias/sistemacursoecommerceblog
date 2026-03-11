@@ -12,6 +12,7 @@ class User
     public $email;
     public $senha;
     public $nivel;
+    public $status;
 
     public function __construct($db)
     {
@@ -20,18 +21,22 @@ class User
 
     public function login($email, $password)
     {
-        $query = "SELECT id, nome, email, senha, nivel FROM " . $this->table_name . " WHERE email = ? LIMIT 1";
+        $query = "SELECT id, nome, email, senha, nivel, status FROM " . $this->table_name . " WHERE email = ? LIMIT 1";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$email]);
 
         if ($stmt->rowCount() > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             if (password_verify($password, $row['senha'])) {
+                if ($row['status'] == 'bloqueado') {
+                    return "Sua conta está bloqueada. Entre em contato com o suporte.";
+                }
                 $this->id = $row['id'];
                 $this->nome = $row['nome'];
                 $this->email = $row['email'];
                 $this->nivel = $row['nivel'];
-                return true;
+                $this->status = $row['status'];
+                return $row; // Return row data for session storage
             }
         }
         return false;
@@ -46,10 +51,17 @@ class User
         if ($stmt_check->rowCount() > 0)
             return false;
 
-        $query = "INSERT INTO " . $this->table_name . " (nome, email, senha) VALUES (?, ?, ?)";
+        $query = "INSERT INTO " . $this->table_name . " (nome, email, senha, status) VALUES (?, ?, ?, 'ativo')";
         $stmt = $this->conn->prepare($query);
         $hashed_password = password_hash($senha, PASSWORD_DEFAULT);
         return $stmt->execute([$nome, $email, $hashed_password]);
+    }
+
+    public function updateStatus($id, $status)
+    {
+        $query = "UPDATE " . $this->table_name . " SET status = ? WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        return $stmt->execute([$status, $id]);
     }
 }
 ?>
