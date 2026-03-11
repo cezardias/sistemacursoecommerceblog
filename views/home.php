@@ -65,7 +65,8 @@
                         <p class="text-2xl font-bold text-navy">R$ 1.199,00</p>
                         <p class="text-orange font-medium text-sm">ou 10x de R$ 149,99</p>
                     </div>
-                    <a href="/add-cart?id=1"
+                    <a href="https://wa.me/5511964811689?text=Olá! Gostaria de me matricular no curso de Gestão de Negócios."
+                        target="_blank"
                         class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition block text-center">Matricule-se</a>
                 </div>
             </div>
@@ -85,7 +86,8 @@
                         <p class="text-2xl font-bold text-navy">R$ 999,00</p>
                         <p class="text-orange font-medium text-sm">ou 10x de R$ 129,00</p>
                     </div>
-                    <a href="/add-cart?id=2"
+                    <a href="https://wa.me/5511964811689?text=Olá! Gostaria de me matricular no curso de Avaliador de Imóveis."
+                        target="_blank"
                         class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition block text-center">Matricule-se</a>
                 </div>
             </div>
@@ -105,7 +107,8 @@
                         <p class="text-2xl font-bold text-navy">R$ 999,00</p>
                         <p class="text-orange font-medium text-sm">ou 10x de R$ 127,90</p>
                     </div>
-                    <a href="/add-cart?id=3"
+                    <a href="https://wa.me/5511964811689?text=Olá! Gostaria de saber mais sobre os Cursos Técnicos."
+                        target="_blank"
                         class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition block text-center">Matricule-se</a>
                 </div>
             </div>
@@ -125,7 +128,8 @@
                         <p class="text-2xl font-bold text-navy">R$ 899,00</p>
                         <p class="text-gray-400 font-medium text-sm italic">Pagamento facilitado</p>
                     </div>
-                    <a href="/add-cart?id=4"
+                    <a href="https://wa.me/5511964811689?text=Olá! Gostaria de saber mais sobre o EJA - Ensino Médio."
+                        target="_blank"
                         class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition block text-center">Matricule-se</a>
                 </div>
             </div>
@@ -150,7 +154,7 @@
                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z">
                 </path>
             </svg>
-            <span class="font-bold">Acesso Vitalício</span>
+            <span class="font-bold">Qualidade Certificada</span>
         </div>
         <div class="flex items-center space-x-3 text-white">
             <svg class="w-10 h-10 text-orange" fill="currentColor" viewBox="0 0 20 20">

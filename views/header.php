@@ -88,7 +88,7 @@
                     <a href="/logout" class="text-gray-600 hover:text-red-500 transition">Sair</a>
                 <?php else: ?>
                     <a href="/login" class="text-navy hover:text-orange transition">Entrar</a>
-                    <a href="/home#cursos"
+                    <a href="https://wa.me/5511964811689?text=Olá! Gostaria de me matricular em um curso." target="_blank"
                         class="bg-orange text-white px-6 py-2 rounded-full hover-bg-orange transition shadow-lg">Matricule-se</a>
                 <?php endif; ?>
             </div>
