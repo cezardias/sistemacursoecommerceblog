@@ -9,7 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nome']) && isset($_POS
     require_once 'models/User.php';
     $userModel = new User($db);
 
-    if ($userModel->register($_POST['nome'], $_POST['email'], $_POST['senha'])) {
         $success = "Conta criada com sucesso! Você já pode entrar.";
     } else {
         $error = "Erro ao criar conta. O e-mail já pode estar em uso.";
