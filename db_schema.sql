@@ -1,11 +1,3 @@
-/* AUTO-GENERATED SCHEMA FOR AULA DIRETA */
-/* COMPATIBLE WITH HOSTGATOR PHPMYADMIN */
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
 CREATE TABLE IF NOT EXISTS `usuarios` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `nome` VARCHAR(100) NOT NULL,
@@ -68,12 +60,10 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
 ) ENGINE=InnoDB;
 
 INSERT INTO `usuarios` (`nome`, `email`, `senha`, `nivel`) VALUES 
-('Super Admin', 'admin', '$2y$10$T8VqU.D9Y.9w.U8wX5Vv9eN6S2g5f3R8h5H8M5v5k5r5S5t5u5v5w', 'admin');
+('Super Admin', 'admin', '$2y$10$UoWxpOlyKqR.fGzL5l2uHeYgJk8C1/R8v97YvV7YvV7YvV7YvV7Yv', 'admin');
 
 INSERT INTO `cursos` (`titulo`, `descricao`, `preco_vista`, `preco_parcelado`, `parcelas`, `categoria`) VALUES 
 ('Pós-Graduação Gestão', 'O próximo passo da sua carreira começa aqui.', 1199.00, 149.99, 10, 'Pós-Graduação'),
 ('Avaliador de Imóveis (COFECI)', 'Curso completo para registro no COFECI.', 999.00, 129.00, 10, 'Técnico'),
 ('Cursos Técnicos', 'Habilidades práticas com foco no mercado.', 999.00, 127.90, 10, 'Técnico'),
 ('EJA', 'Transforme sua história por meio da educação.', 899.00, NULL, 1, 'EJA');
-
-COMMIT;
