@@ -1,25 +1,7 @@
 <?php
 // index.php
-ini_set('session.cookie_httponly', 1);
-ini_set('session.use_only_cookies', 1);
-ini_set('session.cookie_lifetime', 0); // Until browser closes
-
-// Ensure session works across www and non-www if needed
-$domain = $_SERVER['HTTP_HOST'];
-session_set_cookie_params(0, '/', $domain, false, true);
-
 session_start();
 require_once 'config/database.php';
-
-// Debugging (Remove after fix)
-if (isset($_GET['debug_session'])) {
-    echo "
-<pre>";
-    print_r($_SESSION);
-    echo "ID: " . session_id();
-    echo "</pre>";
-    exit();
-}
 
 // Simple Router
 $url = isset($_GET['url']) ? $_GET['url'] : 'home';
