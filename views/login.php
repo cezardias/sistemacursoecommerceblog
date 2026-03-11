@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
         </form>
 
         <div class="text-center mt-6">
-            <p class="text-sm text-gray-500">Ainda não tem conta? <a href="#"
+            <p class="text-sm text-gray-500">Ainda não tem conta? <a href="/register"
                     class="font-bold text-orange underline">Cadastre-se</a></p>
         </div>
     </div>

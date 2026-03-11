@@ -34,6 +34,10 @@ switch ($url) {
         include 'views/login.php';
         break;
 
+    case 'register':
+        include 'views/register.php';
+        break;
+
     case 'admin':
         if (isset($_SESSION['user_id'])) {
             if ($_SESSION['user_nivel'] == 'admin') {

@@ -37,8 +37,15 @@ class User
         return false;
     }
 
-    public function create($nome, $email, $senha)
+    public function register($nome, $email, $senha)
     {
+        // Check if email already exists
+        $check = "SELECT id FROM " . $this->table_name . " WHERE email = ?";
+        $stmt_check = $this->conn->prepare($check);
+        $stmt_check->execute([$email]);
+        if ($stmt_check->rowCount() > 0)
+            return false;
+
         $query = "INSERT INTO " . $this->table_name . " (nome, email, senha) VALUES (?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         $hashed_password = password_hash($senha, PASSWORD_DEFAULT);
