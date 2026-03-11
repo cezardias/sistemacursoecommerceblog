@@ -35,8 +35,12 @@ switch ($url) {
         break;
 
     case 'admin':
-        if (isset($_SESSION['user_nivel']) && $_SESSION['user_nivel'] == 'admin') {
-            include 'views/dashboard_admin.php';
+        if (isset($_SESSION['user_id'])) {
+            if ($_SESSION['user_nivel'] == 'admin') {
+                include 'views/dashboard_admin.php';
+            } else {
+                include 'views/dashboard_client.php';
+            }
         } else {
             header('Location: /login');
         }
@@ -45,6 +49,49 @@ switch ($url) {
     case 'logout':
         session_destroy();
         header('Location: /home');
+        break;
+
+    case 'cart':
+        include 'views/cart.php';
+        break;
+
+    case 'add-cart':
+        if (isset($_GET['id'])) {
+            include 'models/Course.php';
+            include 'controllers/CartController.php';
+            $courseModel = new Course($db);
+            $course = $courseModel->getById($_GET['id']);
+            if ($course) {
+                $cart = new CartController();
+                $cart->add($course['id'], $course['preco_vista'], $course['titulo']);
+            }
+        }
+        header('Location: /cart');
+        break;
+
+    case 'remove-cart':
+        if (isset($_GET['id'])) {
+            include 'controllers/CartController.php';
+            $cart = new CartController();
+            $cart->remove($_GET['id']);
+        }
+        header('Location: /cart');
+        break;
+
+    case 'checkout':
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: /login');
+            exit();
+        }
+        include 'controllers/CartController.php';
+        $cart = new CartController();
+        if ($cart->checkoutSimulation($db, $_SESSION['user_id'])) {
+            $_SESSION['msg'] = "Sua matrícula foi realizada com sucesso!";
+            header('Location: /admin');
+        } else {
+            $_SESSION['error'] = "Erro ao processar matrícula.";
+            header('Location: /cart');
+        }
         break;
 
     default:

@@ -58,15 +58,34 @@
                 <span class="text-2xl font-bold text-navy">Aula Direta</span>
             </a>
             <div class="hidden md:flex space-x-8 items-center font-medium">
-                <a href="#" class="hover:text-orange transition">Cursos</a>
+                <a href="/home#cursos" class="hover:text-orange transition">Cursos</a>
                 <a href="#" class="hover:text-orange transition">EJA</a>
                 <a href="#" class="hover:text-orange transition">Blog</a>
+
+                <a href="/cart" class="relative group">
+                    <svg class="w-6 h-6 text-navy group-hover:text-orange transition" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    <?php
+                    $total_items = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+                    if ($total_items > 0):
+                        ?>
+                        <span
+                            class="absolute -top-2 -right-2 bg-orange text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center animate-bounce">
+                            <?php echo $total_items; ?>
+                        </span>
+                    <?php endif; ?>
+                </a>
+
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <a href="/admin" class="bg-navy text-white px-5 py-2 rounded-full hover-bg-navy transition">Painel</a>
                     <a href="/logout" class="text-gray-600 hover:text-red-500 transition">Sair</a>
                 <?php else: ?>
                     <a href="/login" class="text-navy hover:text-orange transition">Entrar</a>
-                    <a href="#"
+                    <a href="/home#cursos"
                         class="bg-orange text-white px-6 py-2 rounded-full hover-bg-orange transition shadow-lg">Matricule-se</a>
                 <?php endif; ?>
             </div>

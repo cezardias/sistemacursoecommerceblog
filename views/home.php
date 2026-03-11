@@ -65,8 +65,8 @@
                         <p class="text-2xl font-bold text-navy">R$ 1.199,00</p>
                         <p class="text-orange font-medium text-sm">ou 10x de R$ 149,99</p>
                     </div>
-                    <button
-                        class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition">Matricule-se</button>
+                    <a href="/add-cart?id=1"
+                        class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition block text-center">Matricule-se</a>
                 </div>
             </div>
 
@@ -85,8 +85,8 @@
                         <p class="text-2xl font-bold text-navy">R$ 999,00</p>
                         <p class="text-orange font-medium text-sm">ou 10x de R$ 129,00</p>
                     </div>
-                    <button
-                        class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition">Matricule-se</button>
+                    <a href="/add-cart?id=2"
+                        class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition block text-center">Matricule-se</a>
                 </div>
             </div>
 
@@ -105,8 +105,8 @@
                         <p class="text-2xl font-bold text-navy">R$ 999,00</p>
                         <p class="text-orange font-medium text-sm">ou 10x de R$ 127,90</p>
                     </div>
-                    <button
-                        class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition">Matricule-se</button>
+                    <a href="/add-cart?id=3"
+                        class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition block text-center">Matricule-se</a>
                 </div>
             </div>
 
@@ -125,8 +125,8 @@
                         <p class="text-2xl font-bold text-navy">R$ 899,00</p>
                         <p class="text-gray-400 font-medium text-sm italic">Pagamento facilitado</p>
                     </div>
-                    <button
-                        class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition">Matricule-se</button>
+                    <a href="/add-cart?id=4"
+                        class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition block text-center">Matricule-se</a>
                 </div>
             </div>
         </div>
