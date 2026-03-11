@@ -94,7 +94,8 @@ switch ($url) {
                 $cart->add($course['id'], $course['preco_vista'], $course['titulo']);
             }
         }
-        header('Location: /cart');
+        session_write_close();
+        header('Location: /index.php?url=cart');
         break;
 
     case 'remove-cart':
@@ -103,7 +104,8 @@ switch ($url) {
             $cart = new CartController();
             $cart->remove($_GET['id']);
         }
-        header('Location: /cart');
+        session_write_close();
+        header('Location: /index.php?url=cart');
         break;
 
     case 'checkout':
