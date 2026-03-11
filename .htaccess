@@ -1,12 +1,11 @@
+Options -Indexes -MultiViews +FollowSymLinks
+
 RewriteEngine On
 RewriteBase /
-
-# Prevent directory listing
-Options -Indexes
 
 # If the file or directory exists, use it
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 # Otherwise, route to index.php
-RewriteRule ^(.*)$ /index.php?url=$1 [L,QSA]
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
