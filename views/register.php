@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nome']) && isset($_POS
     require_once 'models/User.php';
     $userModel = new User($db);
 
+    if ($userModel->register($_POST['nome'], $_POST['email'], $_POST['senha'])) {
         $success = "Conta criada com sucesso! Você já pode entrar.";
     } else {
         $error = "Erro ao criar conta. O e-mail já pode estar em uso.";
@@ -38,10 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nome']) && isset($_POS
         <?php if ($success): ?>
             <div class="bg-green-50 text-green-700 p-4 rounded-xl text-sm border border-green-100 italic">
                 <?php echo $success; ?>
-                <a href="/login" class="block mt-2 font-bold underline">Clique aqui para entrar</a>
+                <a href="/index.php?url=login" class="block mt-2 font-bold underline">Clique aqui para entrar</a>
             </div>
         <?php else: ?>
-            <form class="mt-8 space-y-6" action="/register" method="POST">
+            <form class="mt-8 space-y-6" action="/index.php?url=register" method="POST">
                 <div class="space-y-4">
                     <div>
                         <label for="nome" class="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
@@ -73,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nome']) && isset($_POS
         <?php endif; ?>
 
         <div class="text-center mt-6">
-            <p class="text-sm text-gray-500">Já possui conta? <a href="/login"
+            <p class="text-sm text-gray-500">Já possui conta? <a href="/index.php?url=login"
                     class="font-bold text-orange underline">Entrar</a></p>
         </div>
     </div>
