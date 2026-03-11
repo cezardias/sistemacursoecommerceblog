@@ -1,11 +1,12 @@
-Options -Indexes +FollowSymLinks
-
 RewriteEngine On
 RewriteBase /
 
-# Evita o loop infinito se o arquivo ou diretório existir
+# Prevent directory listing
+Options -Indexes
+
+# If the file or directory exists, use it
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Encaminha tudo para o index.php
-RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+# Otherwise, route to index.php
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
