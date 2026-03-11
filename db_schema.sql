@@ -1,6 +1,8 @@
 -- Database Schema for Aula Direta System
-CREATE DATABASE IF NOT EXISTS aula_direta CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE aula_direta;
+-- No phpMyAdmin da HostGator, o banco geralmente já vem criado. 
+-- Se estiver rodando localmente, descomente as linhas abaixo:
+-- CREATE DATABASE IF NOT EXISTS aula_direta CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- USE aula_direta;
 
 -- Tabela de Usuários
 CREATE TABLE IF NOT EXISTS usuarios (
