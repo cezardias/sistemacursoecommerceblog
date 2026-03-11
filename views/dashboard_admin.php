@@ -35,10 +35,10 @@ $pendente_comments = $db->query($query_pendente)->fetch(PDO::FETCH_ASSOC)['total
                 <p class="text-gray-500">Bem-vindo ao painel administrativo da Aula Direta.</p>
             </div>
             <div class="flex space-x-4">
-                <a href="/admin?view=blog"
+                <a href="/index.php?url=admin&view=blog"
                     class="bg-navy text-white px-6 py-2 rounded-xl font-bold hover:bg-orange transition shadow-lg">Gerenciar
                     Blog</a>
-                <a href="/admin?view=comments"
+                <a href="/index.php?url=admin&view=comments"
                     class="bg-white text-navy px-6 py-2 rounded-xl border border-gray-200 font-bold hover:bg-gray-50 transition relative">
                     Comentários
                     <?php if ($pendente_comments > 0): ?>

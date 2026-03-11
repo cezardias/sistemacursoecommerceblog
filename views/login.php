@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
             </div>
         <?php endif; ?>
 
-        <form class="mt-8 space-y-6" action="/login" method="POST">
+        <form class="mt-8 space-y-6" action="/index.php?url=login" method="POST">
             <div class="rounded-md shadow-sm -space-y-px">
                 <div class="mb-4">
                     <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mail / Login</label>

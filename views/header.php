@@ -61,11 +61,11 @@
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-8 items-center font-medium">
-                <a href="/home#cursos" class="hover:text-orange transition text-navy">Cursos</a>
+                <a href="/index.php?url=home#cursos" class="hover:text-orange transition text-navy">Cursos</a>
                 <a href="#" class="hover:text-orange transition text-navy">EJA</a>
-                <a href="/blog" class="hover:text-orange transition text-navy">Blog</a>
+                <a href="/index.php?url=blog" class="hover:text-orange transition text-navy">Blog</a>
 
-                <a href="/cart" class="relative group">
+                <a href="/index.php?url=cart" class="relative group">
                     <svg class="w-6 h-6 text-navy group-hover:text-orange transition" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24">
                         <path
@@ -96,17 +96,17 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4">
-            <a href="/home#cursos" class="block text-navy font-medium">Cursos</a>
-            <a href="#" class="block text-navy font-medium">EJA</a>
-            <a href="#" class="block text-navy font-medium">Blog</a>
-            <a href="/cart" class="block text-navy font-medium">Carrinho (<?php echo $total_items; ?>)</a>
+            <a href="/index.php?url=home#cursos" class="block text-navy font-medium">Cursos</a>
+            <a href="/index.php?url=eja" class="block text-navy font-medium">EJA</a>
+            <a href="/index.php?url=blog" class="block text-navy font-medium">Blog</a>
+            <a href="/index.php?url=cart" class="block text-navy font-medium">Carrinho (<?php echo $total_items; ?>)</a>
             <hr>
             <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="/admin" class="block text-navy font-bold">Meu Painel</a>
-                <a href="/logout" class="block text-red-500 font-bold">Sair</a>
+                <a href="/index.php?url=admin" class="block text-navy font-bold">Meu Painel</a>
+                <a href="/index.php?url=logout" class="block text-red-500 font-bold">Sair</a>
             <?php else: ?>
-                <a href="/login" class="block text-navy font-bold">Entrar</a>
-                <a href="/home#cursos"
+                <a href="/index.php?url=login" class="block text-navy font-bold">Entrar</a>
+                <a href="/index.php?url=home#cursos"
                     class="block bg-orange text-white text-center py-3 rounded-xl font-bold">Matricule-se</a>
             <?php endif; ?>
         </div>
