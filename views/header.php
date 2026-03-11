@@ -45,10 +45,10 @@
 </head>
 
 <body class="bg-gray-50 text-gray-900">
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <nav class="shadow-md sticky top-0 z-50" style="background-color: #f9f8f6;">
+        <div class="container mx-auto px-6 py-2 flex justify-between items-center">
             <a href="/home" class="flex items-center">
-                <img src="/assets/images/logo.png?v=1.2" alt="Aula Direta" class="h-12 md:h-16">
+                <img src="/assets/images/logo.png?v=1.3" alt="Aula Direta" class="h-20 md:h-28">
             </a>
 
             <!-- Mobile Menu Button -->
@@ -61,9 +61,9 @@
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-8 items-center font-medium">
-                <a href="/home#cursos" class="hover:text-orange transition">Cursos</a>
-                <a href="#" class="hover:text-orange transition">EJA</a>
-                <a href="#" class="hover:text-orange transition">Blog</a>
+                <a href="/home#cursos" class="hover:text-orange transition text-navy">Cursos</a>
+                <a href="#" class="hover:text-orange transition text-navy">EJA</a>
+                <a href="#" class="hover:text-orange transition text-navy">Blog</a>
 
                 <a href="/cart" class="relative group">
                     <svg class="w-6 h-6 text-navy group-hover:text-orange transition" fill="none" stroke="currentColor"
