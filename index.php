@@ -12,11 +12,13 @@ $db = (new Database())->getConnection();
 // Basic Layout Components
 function render_header($title = "Aula Direta")
 {
+    global $db, $page_title;
     include 'views/header.php';
 }
 
 function render_footer()
 {
+    global $db;
     include 'views/footer.php';
 }
 

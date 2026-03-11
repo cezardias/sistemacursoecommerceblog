@@ -47,7 +47,7 @@
 <body class="bg-gray-50 text-gray-900">
     <nav class="shadow-md sticky top-0 z-50" style="background-color: #f9f8f6;">
         <div class="container mx-auto px-6 py-2 flex justify-between items-center">
-            <a href="/home" class="flex items-center">
+            <a href="/index.php?url=home" class="flex items-center">
                 <img src="/assets/images/logo.png?v=1.3" alt="Aula Direta" class="h-20 md:h-28">
             </a>
 
@@ -84,10 +84,11 @@
                 </a>
 
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <a href="/admin" class="bg-navy text-white px-5 py-2 rounded-full hover-bg-navy transition">Painel</a>
-                    <a href="/logout" class="text-gray-600 hover:text-red-500 transition">Sair</a>
+                    <a href="/index.php?url=admin"
+                        class="bg-navy text-white px-5 py-2 rounded-full hover-bg-navy transition">Painel</a>
+                    <a href="/index.php?url=logout" class="text-gray-600 hover:text-red-500 transition">Sair</a>
                 <?php else: ?>
-                    <a href="/login" class="text-navy hover:text-orange transition">Entrar</a>
+                    <a href="/index.php?url=login" class="text-navy hover:text-orange transition">Entrar</a>
                     <a href="https://wa.me/5511964811689?text=Olá! Gostaria de me matricular em um curso." target="_blank"
                         class="bg-orange text-white px-6 py-2 rounded-full hover-bg-orange transition shadow-lg">Matricule-se</a>
                 <?php endif; ?>
