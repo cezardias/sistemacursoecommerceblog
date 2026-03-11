@@ -40,7 +40,8 @@ switch ($url) {
 
     case 'logout':
         session_destroy();
-        header('Location: /home');
+        session_write_close();
+        header('Location: /index.php?url=home');
         break;
 
     case 'blog':
@@ -51,7 +52,8 @@ switch ($url) {
         if (isset($_GET['slug'])) {
             include 'views/blog_post.php';
         } else {
-            header('Location: /blog');
+            session_write_close();
+            header('Location: /index.php?url=blog');
         }
         break;
 
@@ -72,7 +74,8 @@ switch ($url) {
                 include 'views/dashboard_client.php';
             }
         } else {
-            header('Location: /login');
+            session_write_close();
+            header('Location: /index.php?url=login');
         }
         break;
 
@@ -105,17 +108,20 @@ switch ($url) {
 
     case 'checkout':
         if (!isset($_SESSION['user_id'])) {
-            header('Location: /login');
+            session_write_close();
+            header('Location: /index.php?url=login');
             exit();
         }
         include 'controllers/CartController.php';
         $cart = new CartController();
         if ($cart->checkoutSimulation($db, $_SESSION['user_id'])) {
             $_SESSION['msg'] = "Sua matrícula foi realizada com sucesso!";
-            header('Location: /admin');
+            session_write_close();
+            header('Location: /index.php?url=admin');
         } else {
             $_SESSION['error'] = "Erro ao processar matrícula.";
-            header('Location: /cart');
+            session_write_close();
+            header('Location: /index.php?url=cart');
         }
         break;
 

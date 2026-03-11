@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
         $_SESSION['user_nome'] = $result['nome'];
         $_SESSION['user_nivel'] = $result['nivel'];
 
+        session_write_close();
         header('Location: /index.php?url=admin');
         exit();
     } elseif (is_string($result)) {
