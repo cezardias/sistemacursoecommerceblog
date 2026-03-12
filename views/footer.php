@@ -34,7 +34,12 @@
                 <li><a href="https://api.whatsapp.com/send?phone=5561999361189&text=Olá! Preciso de ajuda com o portal."
                         target="_blank" class="hover:text-white transition">Central de Ajuda</a></li>
                 <li><a href="https://api.whatsapp.com/send?phone=5561999361189&text=Olá! Gostaria de falar com a equipe de atendimento."
-                        target="_blank" class="hover:text-white transition">Contato</a></li>
+                        target="_blank" class="hover:text-white transition">Contato</a>
+                    <div class="mt-2 text-xs text-gray-500">
+                        CNPJ: 61.843.799/0001-72<br>
+                        Tel: (61) 99936-1189
+                    </div>
+                </li>
                 <li><a href="#" class="hover:text-white transition">Termos de Uso</a></li>
             </ul>
         </div>
