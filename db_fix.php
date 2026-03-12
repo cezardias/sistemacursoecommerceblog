@@ -10,22 +10,27 @@ if (!$db) {
 echo "<h1>Limpando e Consertando o Banco de Dados</h1>";
 
 try {
+    // --- FIX USUARIOS ---
     // 1. Adicionar coluna 'status' se não existir
     $check_status = $db->query("SHOW COLUMNS FROM usuarios LIKE 'status'");
     if ($check_status->rowCount() == 0) {
         $db->exec("ALTER TABLE usuarios ADD COLUMN status VARCHAR(20) DEFAULT 'ativo' AFTER nivel");
-        echo "✅ Coluna 'status' adicionada.<br>";
-    } else {
-        echo "ℹ️ Coluna 'status' já existe.<br>";
+        echo "✅ Coluna 'status' adicionada em 'usuarios'.<br>";
     }
 
-    // 2. Adicionar coluna 'nivel' se não existir (por precaução)
-    $check_nivel = $db->query("SHOW COLUMNS FROM usuarios LIKE 'nivel'");
-    if ($check_nivel->rowCount() == 0) {
-        $db->exec("ALTER TABLE usuarios ADD COLUMN nivel VARCHAR(20) DEFAULT 'cliente' AFTER senha");
-        echo "✅ Coluna 'nivel' adicionada.<br>";
-    } else {
-        echo "ℹ️ Coluna 'nivel' já existe.<br>";
+    // --- FIX BLOG_POSTS ---
+    // 1. Adicionar coluna 'status' se não existir
+    $check_blog_status = $db->query("SHOW COLUMNS FROM blog_posts LIKE 'status'");
+    if ($check_blog_status->rowCount() == 0) {
+        $db->exec("ALTER TABLE blog_posts ADD COLUMN status VARCHAR(20) DEFAULT 'publicado' AFTER imagem");
+        echo "✅ Coluna 'status' adicionada em 'blog_posts'.<br>";
+    }
+
+    // 2. Adicionar coluna 'categoria' se não existir
+    $check_blog_cat = $db->query("SHOW COLUMNS FROM blog_posts LIKE 'categoria'");
+    if ($check_blog_cat->rowCount() == 0) {
+        $db->exec("ALTER TABLE blog_posts ADD COLUMN categoria VARCHAR(50) DEFAULT 'Geral' AFTER status");
+        echo "✅ Coluna 'categoria' adicionada em 'blog_posts'.<br>";
     }
 
     // 3. Garantir que o Admin existe e tem tudo certo
