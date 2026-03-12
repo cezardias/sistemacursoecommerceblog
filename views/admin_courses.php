@@ -15,6 +15,15 @@ if (isset($_GET['delete'])) {
     exit();
 }
 
+if (isset($_GET['toggle_status'])) {
+    if ($courseModel->toggleStatus($_GET['toggle_status'])) {
+        $_SESSION['msg'] = "Status do curso alterado!";
+    }
+    session_write_close();
+    header('Location: ' . $base_url . 'admin&view=courses');
+    exit();
+}
+
 $courses = $courseModel->getAll();
 ?>
 
@@ -50,6 +59,7 @@ $courses = $courseModel->getAll();
                             <th class="px-8 py-4">Curso</th>
                             <th class="px-8 py-4">Categoria</th>
                             <th class="px-8 py-4">Preço (Vista)</th>
+                            <th class="px-8 py-4">Status</th>
                             <th class="px-8 py-4 text-center">Ações</th>
                         </tr>
                     </thead>
@@ -77,6 +87,18 @@ $courses = $courseModel->getAll();
                                 <td class="px-8 py-6 text-navy font-medium">
                                     R$
                                     <?php echo number_format($c['preco_vista'], 2, ',', '.'); ?>
+                                </td>
+                                <td class="px-8 py-6">
+                                    <a href="/index.php?url=admin&view=courses&toggle_status=<?php echo $c['id']; ?>"
+                                        class="flex items-center space-x-2">
+                                        <div
+                                            class="w-3 h-3 rounded-full <?php echo $c['status'] == 'ativo' ? 'bg-green-500' : 'bg-red-500'; ?>">
+                                        </div>
+                                        <span
+                                            class="text-sm font-bold <?php echo $c['status'] == 'ativo' ? 'text-green-700' : 'text-red-700'; ?>">
+                                            <?php echo ucfirst($c['status']); ?>
+                                        </span>
+                                    </a>
                                 </td>
                                 <td class="px-8 py-6">
                                     <div class="flex justify-center space-x-4">

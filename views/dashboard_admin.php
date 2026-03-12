@@ -139,26 +139,36 @@ $pendente_comments = $db->query($query_pendente)->fetch(PDO::FETCH_ASSOC)['total
                                     </span></td>
                                 <td class="px-8 py-6 text-navy font-medium">R$
                                     <?php echo number_format($curso['preco_vista'], 2, ',', '.'); ?>
-                                </td>
                                 <td class="px-8 py-6">
-                                    <span class="flex items-center text-green-600 text-xs font-bold">
-                                        <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span> Ativo
-                                    </span>
+                                    <div class="flex items-center space-x-2">
+                                        <div
+                                            class="w-2 h-2 rounded-full <?php echo ($curso['status'] ?? 'ativo') == 'ativo' ? 'bg-green-500' : 'bg-red-500'; ?>">
+                                        </div>
+                                        <span
+                                            class="text-sm font-bold <?php echo ($curso['status'] ?? 'ativo') == 'ativo' ? 'text-green-600' : 'text-red-600'; ?>">
+                                            <?php echo ucfirst($curso['status'] ?? 'Ativo'); ?>
+                                        </span>
+                                    </div>
                                 </td>
                                 <td class="px-8 py-6">
                                     <div class="flex justify-center space-x-4">
-                                        <button class="text-gray-400 hover:text-navy transition"><svg class="w-5 h-5"
-                                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <a href="/index.php?url=admin&view=course_form&id=<?php echo $curso['id']; ?>"
+                                            class="text-gray-400 hover:text-navy transition">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path
                                                     d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
                                                     stroke-width="2"></path>
-                                            </svg></button>
-                                        <button class="text-gray-400 hover:text-red-500 transition"><svg class="w-5 h-5"
-                                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            </svg>
+                                        </a>
+                                        <a href="/index.php?url=admin&view=courses&delete=<?php echo $curso['id']; ?>"
+                                            onclick="return confirm('Tem certeza?')"
+                                            class="text-gray-400 hover:text-red-500 transition">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path
                                                     d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                                                     stroke-width="2"></path>
-                                            </svg></button>
+                                            </svg>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>

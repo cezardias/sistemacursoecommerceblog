@@ -24,8 +24,12 @@ try {
     if ($check->rowCount() == 0) {
         $db->exec("ALTER TABLE cursos ADD COLUMN imagem VARCHAR(255) AFTER categoria");
         echo "<p style='color:green'>✅ Coluna 'imagem' adicionada em 'cursos'.</p>";
-    } else {
-        echo "<p style='color:blue'>ℹ️ Coluna 'imagem' já existe em 'cursos'.</p>";
+    }
+
+    $check_status = $db->query("SHOW COLUMNS FROM cursos LIKE 'status'");
+    if ($check_status->rowCount() == 0) {
+        $db->exec("ALTER TABLE cursos ADD COLUMN status VARCHAR(20) DEFAULT 'ativo' AFTER imagem");
+        echo "<p style='color:green'>✅ Coluna 'status' adicionada em 'cursos'.</p>";
     }
 
     echo "<hr>";

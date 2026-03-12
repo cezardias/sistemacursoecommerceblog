@@ -14,9 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $titulo = $_POST['titulo'];
     $descricao = $_POST['descricao'];
     $preco_vista = $_POST['preco_vista'];
-    $preco_parcelado = $_POST['preco_parcelado'];
     $parcelas = $_POST['parcelas'];
     $categoria = $_POST['categoria'];
+    $status = $_POST['status'] ?? 'ativo';
     $imagem = $_POST['imagem_url'] ?? null;
 
     // Handle File Upload
@@ -40,9 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($id) {
-        $success = $courseModel->update($id, $titulo, $descricao, $preco_vista, $preco_parcelado, $parcelas, $categoria, $imagem);
+        $success = $courseModel->update($id, $titulo, $descricao, $preco_vista, $preco_parcelado, $parcelas, $categoria, $imagem, $status);
     } else {
-        $success = $courseModel->create($titulo, $descricao, $preco_vista, $preco_parcelado, $parcelas, $categoria, $imagem);
+        $success = $courseModel->create($titulo, $descricao, $preco_vista, $preco_parcelado, $parcelas, $categoria, $imagem, $status);
     }
 
     if ($success) {
@@ -127,26 +127,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
 
-                <div>
-                    <label class="block text-sm font-bold text-navy mb-2">Imagem do Curso</label>
-                    <div class="flex flex-col space-y-4">
-                        <?php if ($course && $course['imagem']): ?>
-                            <img src="<?php echo $course['imagem']; ?>"
-                                class="w-32 h-24 object-cover rounded-xl shadow-md mb-2">
-                        <?php endif; ?>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold text-navy mb-2">Status do Curso</label>
+                        <select name="status" required
+                            class="w-full bg-gray-50 border border-gray-200 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-orange appearance-none">
+                            <option value="ativo" <?php echo ($course && $course['status'] == 'ativo') ? 'selected' : ''; ?>>Ativo (Visível no site)</option>
+                            <option value="inativo" <?php echo ($course && $course['status'] == 'inativo') ? 'selected' : ''; ?>>Inativo (Oculto)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-navy mb-2">Imagem do Curso</label>
+                        <div class="flex flex-col space-y-4 text-xs text-gray-400">
+                            Dica: Imagens de 800x600 ficam ideais.
+                        </div>
+                    </div>
+                </div>
 
-                        <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                            <div class="flex-1">
-                                <label class="block text-xs text-gray-400 mb-1">Fazer Upload de Arquivo</label>
-                                <input type="file" name="imagem_file"
-                                    class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange file:text-white hover:file:bg-navy transition">
+                <div class="flex flex-col space-y-4">
+                    <?php if ($course && $course['imagem']): ?>
+                        <div class="relative group w-48 h-32">
+                            <img src="<?php echo $course['imagem']; ?>"
+                                class="w-full h-full object-cover rounded-xl shadow-md">
+                            <div
+                                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center rounded-xl">
+                                <span class="text-white text-xs font-bold">Imagem Atual</span>
                             </div>
-                            <div class="flex-1">
-                                <label class="block text-xs text-gray-400 mb-1">Ou cole a URL da imagem</label>
-                                <input type="text" name="imagem_url"
-                                    value="<?php echo $course ? $course['imagem'] : ''; ?>" placeholder="https://..."
-                                    class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange">
-                            </div>
+                        </div>
+                    <?php endif; ?>
+
+                    <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                        <div class="flex-1">
+                            <label class="block text-xs text-gray-400 mb-1">Fazer Novo Upload</label>
+                            <input type="file" name="imagem_file"
+                                class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange file:text-white hover:file:bg-navy transition">
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-xs text-gray-400 mb-1">Ou alterar URL manual</label>
+                            <input type="text" name="imagem_url" value="<?php echo $course ? $course['imagem'] : ''; ?>"
+                                placeholder="https://..."
+                                class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange">
                         </div>
                     </div>
                 </div>

@@ -12,9 +12,13 @@ class Course
         $this->conn = $db;
     }
 
-    public function getAll()
+    public function getAll($only_active = false)
     {
-        $query = "SELECT * FROM " . $this->table_name . " ORDER BY created_at DESC";
+        $query = "SELECT * FROM " . $this->table_name;
+        if ($only_active) {
+            $query .= " WHERE status = 'ativo'";
+        }
+        $query .= " ORDER BY id DESC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -28,21 +32,21 @@ class Course
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function create($titulo, $descricao, $preco_vista, $preco_parcelado, $parcelas, $categoria, $imagem = null)
+    public function create($titulo, $description, $preco_vista, $preco_parcelado, $parcelas, $categoria, $imagem = null, $status = 'ativo')
     {
-        $query = "INSERT INTO " . $this->table_name . " (titulo, descricao, preco_vista, preco_parcelado, parcelas, categoria, imagem) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO " . $this->table_name . " (titulo, descricao, preco_vista, preco_parcelado, parcelas, categoria, imagem, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
-        return $stmt->execute([$titulo, $descricao, $preco_vista, $preco_parcelado, $parcelas, $categoria, $imagem]);
+        return $stmt->execute([$titulo, $description, $preco_vista, $preco_parcelado, $parcelas, $categoria, $imagem, $status]);
     }
 
-    public function update($id, $titulo, $descricao, $preco_vista, $preco_parcelado, $parcelas, $categoria, $imagem = null)
+    public function update($id, $titulo, $description, $preco_vista, $preco_parcelado, $parcelas, $categoria, $imagem = null, $status = 'ativo')
     {
         if ($imagem) {
-            $query = "UPDATE " . $this->table_name . " SET titulo = ?, descricao = ?, preco_vista = ?, preco_parcelado = ?, parcelas = ?, categoria = ?, imagem = ? WHERE id = ?";
-            $params = [$titulo, $descricao, $preco_vista, $preco_parcelado, $parcelas, $categoria, $imagem, $id];
+            $query = "UPDATE " . $this->table_name . " SET titulo = ?, descricao = ?, preco_vista = ?, preco_parcelado = ?, parcelas = ?, categoria = ?, imagem = ?, status = ? WHERE id = ?";
+            $params = [$titulo, $description, $preco_vista, $preco_parcelado, $parcelas, $categoria, $imagem, $status, $id];
         } else {
-            $query = "UPDATE " . $this->table_name . " SET titulo = ?, descricao = ?, preco_vista = ?, preco_parcelado = ?, parcelas = ?, categoria = ? WHERE id = ?";
-            $params = [$titulo, $descricao, $preco_vista, $preco_parcelado, $parcelas, $categoria, $id];
+            $query = "UPDATE " . $this->table_name . " SET titulo = ?, descricao = ?, preco_vista = ?, preco_parcelado = ?, parcelas = ?, categoria = ?, status = ? WHERE id = ?";
+            $params = [$titulo, $description, $preco_vista, $preco_parcelado, $parcelas, $categoria, $status, $id];
         }
         $stmt = $this->conn->prepare($query);
         return $stmt->execute($params);
@@ -50,17 +54,14 @@ class Course
 
     public function delete($id)
     {
-        $query = "SELECT imagem FROM " . $this->table_name . " WHERE id = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute([$id]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // Se quiser deletar o arquivo físico também descomente abaixo (cuidado com URLs de terceiros)
-        // if ($row && $row['imagem'] && strpos($row['imagem'], 'uploads/') !== false) {
-        //     @unlink($row['imagem']);
-        // }
-
         $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        return $stmt->execute([$id]);
+    }
+
+    public function toggleStatus($id)
+    {
+        $query = "UPDATE " . $this->table_name . " SET status = IF(status = 'ativo', 'inativo', 'ativo') WHERE id = ?";
         $stmt = $this->conn->prepare($query);
         return $stmt->execute([$id]);
     }

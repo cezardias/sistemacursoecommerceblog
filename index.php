@@ -34,7 +34,7 @@ switch ($url) {
     case '':
         include 'models/Course.php';
         $courseModel = new Course($db);
-        $courses = $courseModel->getAll();
+        $courses = $courseModel->getAll(true);
         include 'views/home.php';
         break;
 
