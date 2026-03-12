@@ -51,88 +51,34 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Pós-Graduação Gestão -->
-            <div
-                class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
-                <div class="bg-navy h-48 flex items-center justify-center text-white text-6xl">🎓</div>
-                <div class="p-6">
-                    <span class="text-xs font-bold uppercase tracking-wider text-orange mb-2 block">Pós-Graduação</span>
-                    <h3 class="text-xl font-bold text-navy mb-3">Gestão de Negócios</h3>
-                    <p class="text-gray-500 text-sm mb-6 line-clamp-2">Prepare-se para os desafios do mercado com
-                        conhecimento aplicado.</p>
-                    <div class="mb-6">
-                        <p class="text-gray-400 text-xs">À vista por:</p>
-                        <p class="text-2xl font-bold text-navy">R$ 1.199,00</p>
-                        <p class="text-orange font-medium text-sm">ou 10x de R$ 149,99</p>
+            <?php foreach ($courses as $c): ?>
+                <div
+                    class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
+                    <div class="h-48 overflow-hidden bg-navy flex items-center justify-center">
+                        <?php if ($c['imagem']): ?>
+                            <img src="<?php echo $c['imagem']; ?>" class="w-full h-full object-cover">
+                        <?php else: ?>
+                            <div class="text-white text-6xl opacity-20">🎓</div>
+                        <?php endif; ?>
                     </div>
-                    <a href="https://wa.me/5511964811689?text=Olá! Gostaria de me matricular no curso de Gestão de Negócios."
-                        target="_blank"
-                        class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition block text-center">Matricule-se</a>
-                </div>
-            </div>
-
-            <!-- Avaliador de Imóveis -->
-            <div
-                class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
-                <div class="bg-orange h-48 flex items-center justify-center text-white text-6xl">🏠</div>
-                <div class="p-6">
-                    <span class="text-xs font-bold uppercase tracking-wider text-navy mb-2 block">Técnico /
-                        COFECI</span>
-                    <h3 class="text-xl font-bold text-navy mb-3">Avaliador de Imóveis</h3>
-                    <p class="text-gray-500 text-sm mb-6 line-clamp-2">Curso obrigatório para registro no COFECI e
-                        atuação profissional.</p>
-                    <div class="mb-6">
-                        <p class="text-gray-400 text-xs">À vista por:</p>
-                        <p class="text-2xl font-bold text-navy">R$ 999,00</p>
-                        <p class="text-orange font-medium text-sm">ou 10x de R$ 129,00</p>
+                    <div class="p-6">
+                        <span
+                            class="text-xs font-bold uppercase tracking-wider text-orange mb-2 block"><?php echo $c['categoria']; ?></span>
+                        <h3 class="text-xl font-bold text-navy mb-3"><?php echo $c['titulo']; ?></h3>
+                        <p class="text-gray-500 text-sm mb-6 line-clamp-2"><?php echo $c['descricao']; ?></p>
+                        <div class="mb-6">
+                            <p class="text-gray-400 text-xs">À vista por:</p>
+                            <p class="text-2xl font-bold text-navy">R$
+                                <?php echo number_format($c['preco_vista'], 2, ',', '.'); ?></p>
+                            <p class="text-orange font-medium text-sm">ou <?php echo $c['parcelas']; ?>x de R$
+                                <?php echo number_format($c['preco_parcelado'] / $c['parcelas'], 2, ',', '.'); ?></p>
+                        </div>
+                        <a href="https://api.whatsapp.com/send?phone=5561999361189&text=Olá! Gostaria de me matricular no curso: <?php echo urlencode($c['titulo']); ?>"
+                            target="_blank"
+                            class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition block text-center">Matricule-se</a>
                     </div>
-                    <a href="https://wa.me/5511964811689?text=Olá! Gostaria de me matricular no curso de Avaliador de Imóveis."
-                        target="_blank"
-                        class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition block text-center">Matricule-se</a>
                 </div>
-            </div>
-
-            <!-- Cursos Técnicos -->
-            <div
-                class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
-                <div class="bg-gray-100 h-48 flex items-center justify-center text-navy text-6xl">🛠️</div>
-                <div class="p-6">
-                    <span
-                        class="text-xs font-bold uppercase tracking-wider text-orange mb-2 block">Profissionalizante</span>
-                    <h3 class="text-xl font-bold text-navy mb-3">Cursos Técnicos</h3>
-                    <p class="text-gray-500 text-sm mb-6 line-clamp-2">Habilidades práticas e conhecimento qualificado
-                        para o mercado.</p>
-                    <div class="mb-6">
-                        <p class="text-gray-400 text-xs">À vista por:</p>
-                        <p class="text-2xl font-bold text-navy">R$ 999,00</p>
-                        <p class="text-orange font-medium text-sm">ou 10x de R$ 127,90</p>
-                    </div>
-                    <a href="https://wa.me/5511964811689?text=Olá! Gostaria de saber mais sobre os Cursos Técnicos."
-                        target="_blank"
-                        class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition block text-center">Matricule-se</a>
-                </div>
-            </div>
-
-            <!-- EJA -->
-            <div
-                class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
-                <div class="bg-navy h-48 flex items-center justify-center text-white text-6xl">📖</div>
-                <div class="p-6">
-                    <span class="text-xs font-bold uppercase tracking-wider text-orange mb-2 block">Educação
-                        Básica</span>
-                    <h3 class="text-xl font-bold text-navy mb-3">EJA - Ensino Médio</h3>
-                    <p class="text-gray-500 text-sm mb-6 line-clamp-2">Conclua seus estudos com rapidez e qualidade
-                        certificada.</p>
-                    <div class="mb-6">
-                        <p class="text-gray-400 text-xs">Mensalidades a partir de:</p>
-                        <p class="text-2xl font-bold text-navy">R$ 899,00</p>
-                        <p class="text-gray-400 font-medium text-sm italic">Pagamento facilitado</p>
-                    </div>
-                    <a href="https://wa.me/5511964811689?text=Olá! Gostaria de saber mais sobre o EJA - Ensino Médio."
-                        target="_blank"
-                        class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition block text-center">Matricule-se</a>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>

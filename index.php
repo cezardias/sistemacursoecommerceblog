@@ -75,6 +75,10 @@ switch ($url) {
                     include 'views/admin_blog_form.php';
                 } elseif ($view == 'comments') {
                     include 'views/admin_comments.php';
+                } elseif ($view == 'courses') {
+                    include 'views/admin_courses.php';
+                } elseif ($view == 'course_form') {
+                    include 'views/admin_course_form.php';
                 } else {
                     include 'views/dashboard_admin.php';
                 }

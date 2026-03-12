@@ -113,7 +113,8 @@ $pendente_comments = $db->query($query_pendente)->fetch(PDO::FETCH_ASSOC)['total
         <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
             <div class="p-8 border-b border-gray-100 flex justify-between items-center">
                 <h2 class="text-xl font-bold text-navy">Gerenciar Cursos</h2>
-                <a href="#" class="text-sm font-bold text-orange hover:underline">Ver Tabela Completa</a>
+                <a href="/index.php?url=admin&view=courses" class="text-sm font-bold text-orange hover:underline">Ver
+                    Tabela Completa</a>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-left">
