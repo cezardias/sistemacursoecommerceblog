@@ -1,5 +1,6 @@
 <?php
 // views/admin_course_form.php
+render_header("Editar Curso");
 require_once 'models/Course.php';
 $courseModel = new Course($db);
 
@@ -181,3 +182,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 </div>
+
+<?php render_footer(); ?>

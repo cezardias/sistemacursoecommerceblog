@@ -8,6 +8,7 @@
                     </path>
                 </svg>
                 <span class="text-2xl font-bold">Aula Direta</span>
+                <span class="text-xs text-gray-500 ml-2">CNPJ: 61.843.799/0001-72</span>
             </div>
             <p class="text-gray-400 max-w-sm mb-6">Transformando vidas através da educação de qualidade e acessível para
                 todos.</p>

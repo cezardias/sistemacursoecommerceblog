@@ -1,5 +1,6 @@
 <?php
 // views/admin_courses.php
+render_header("Gerenciar Cursos");
 require_once 'models/Course.php';
 $courseModel = new Course($db);
 
@@ -129,3 +130,5 @@ $courses = $courseModel->getAll();
         </div>
     </div>
 </div>
+
+<?php render_footer(); ?>
