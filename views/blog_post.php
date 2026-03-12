@@ -109,14 +109,14 @@ $comments = $commentModel->readByPost($post['id']);
 
                 <!-- Comment Form -->
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <div class="bg-navy p-10 rounded-3xl shadow-2xl text-white">
-                        <h4 class="text-2xl font-bold mb-6">Deixe seu comentário</h4>
+                    <div class="bg-gray-100 p-10 rounded-3xl shadow-xl border border-gray-200">
+                        <h4 class="text-2xl font-bold mb-6 text-navy">Deixe seu comentário</h4>
                         <form action="/post?slug=<?php echo $post['slug']; ?>#comments" method="POST">
                             <textarea name="comentario" required rows="4"
-                                class="w-full bg-navy/50 border border-white/20 rounded-2xl p-4 text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-orange mb-6"
+                                class="w-full bg-white border border-gray-300 rounded-2xl p-4 text-navy placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange mb-6"
                                 placeholder="Escreva aqui seu comentário..."></textarea>
                             <button type="submit"
-                                class="bg-orange text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-navy transition shadow-lg">Enviar
+                                class="bg-navy text-white px-8 py-4 rounded-full font-bold hover:bg-orange transition shadow-lg">Enviar
                                 Comentário</button>
                         </form>
                     </div>
