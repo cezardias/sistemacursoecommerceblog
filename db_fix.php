@@ -44,8 +44,19 @@ try {
         if ($check->rowCount() == 0) {
             $db->exec($sql);
             echo "✅ Coluna '$col' adicionada em 'blog_posts'.<br>";
+        } else {
+            echo "ℹ️ Coluna '$col' já existe em 'blog_posts'.<br>";
         }
     }
+
+    // 2.3 Mostrar estrutura final para confirmação
+    echo "<h4>Estrutura atual da tabela 'blog_posts':</h4>";
+    $cols = $db->query("DESCRIBE blog_posts");
+    echo "<ul>";
+    while ($c = $cols->fetch(PDO::FETCH_ASSOC)) {
+        echo "<li>" . $c['Field'] . " (" . $c['Type'] . ")</li>";
+    }
+    echo "</ul>";
 
     // 3. Garantir que o Admin existe e tem tudo certo
     $email = 'admin@auladireta.com.br';
