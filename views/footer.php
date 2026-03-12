@@ -41,7 +41,7 @@
                         Tel: (61) 99936-1189
                     </div>
                 </li>
-                <li><a href="#" class="hover:text-white transition">Termos de Uso</a></li>
+                <li><a href="/index.php?url=termos-uso" class="hover:text-white transition">Termos de Uso</a></li>
             </ul>
         </div>
     </div>

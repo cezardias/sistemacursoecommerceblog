@@ -64,6 +64,10 @@ switch ($url) {
         include 'views/politica_privacidade.php';
         break;
 
+    case 'termos-uso':
+        include 'views/termos_uso.php';
+        break;
+
     case 'post':
         if (isset($_GET['slug'])) {
             include 'views/blog_post.php';
