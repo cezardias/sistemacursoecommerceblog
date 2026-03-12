@@ -1,9 +1,4 @@
 <?php
-$page_title = "Entrar";
-render_header();
-
-$error = "";
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_POST['senha'])) {
     require_once 'models/User.php';
     $userModel = new User($db);
@@ -23,6 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
         $error = "Credenciais inválidas.";
     }
 }
+
+$page_title = "Entrar";
+render_header();
 ?>
 
 <div class="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
