@@ -26,14 +26,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $blogModel->categoria = $_POST['categoria'];
     $blogModel->status = $_POST['status'];
     $blogModel->autor_id = $_SESSION['user_id'];
-    $blogModel->imagem = $_POST['imagem']; // Simple text field for now
+
+    // Handle Image Upload
+    $imagem_path = $_POST['imagem']; // Default to URL field
+
+    if (isset($_FILES['imagem_file']) && $_FILES['imagem_file']['error'] == 0) {
+        $target_dir = "uploads/blog/";
+        if (!is_dir($target_dir)) {
+            mkdir($target_dir, 0755, true);
+        }
+
+        $file_extension = strtolower(pathinfo($_FILES['imagem_file']['name'], PATHINFO_EXTENSION));
+        $new_filename = uniqid('post_') . '.' . $file_extension;
+        $target_file = $target_dir . $new_filename;
+
+        $allowed_types = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+        if (in_array($file_extension, $allowed_types)) {
+            if (move_uploaded_file($_FILES['imagem_file']['tmp_name'], $target_file)) {
+                $imagem_path = '/' . $target_file; // Absolute path for browser
+            }
+        }
+    }
+
+    $blogModel->imagem = $imagem_path;
 
     if ($id) {
         $blogModel->update();
     } else {
         $blogModel->create();
     }
-    header('Location: /admin?view=blog');
+    header('Location: /index.php?url=admin&view=blog');
     exit();
 }
 
@@ -55,7 +77,7 @@ render_header();
             <?php echo $page_title; ?>
         </h1>
 
-        <form method="POST" class="bg-white p-10 rounded-3xl shadow-xl border border-gray-100 space-y-8">
+        <form method="POST" enctype="multipart/form-data" class="bg-white p-10 rounded-3xl shadow-xl border border-gray-100 space-y-8">
             <div>
                 <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Título da
                     Matéria</label>
@@ -81,13 +103,41 @@ render_header();
                 </div>
             </div>
 
-            <div>
-                <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">URL da
-                    Imagem</label>
-                <input type="text" name="imagem" value="<?php echo $post ? $post['imagem'] : ''; ?>"
-                    class="w-full bg-gray-50 border border-gray-200 rounded-2xl p-4 text-navy focus:outline-none focus:ring-2 focus:ring-orange"
-                    placeholder="https://exemplo.com/imagem.jpg">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Upload de
+                        Capa</label>
+                    <div class="relative group">
+                        <input type="file" name="imagem_file" accept="image/*"
+                            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" id="file_input">
+                        <div
+                            class="w-full bg-gray-50 border border-dashed border-gray-300 rounded-2xl p-4 text-center group-hover:border-orange transition flex items-center justify-center space-x-2">
+                            <svg class="w-5 h-5 text-gray-400 group-hover:text-orange" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                            <span class="text-sm text-gray-500 group-hover:text-navy font-medium" id="file_name">
+                                Escolher arquivo...
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">OU URL da
+                        Imagem</label>
+                    <input type="text" name="imagem" value="<?php echo $post ? $post['imagem'] : ''; ?>"
+                        class="w-full bg-gray-50 border border-gray-200 rounded-2xl p-4 text-navy focus:outline-none focus:ring-2 focus:ring-orange"
+                        placeholder="https://exemplo.com/imagem.jpg">
+                </div>
             </div>
+
+            <script>
+                document.getElementById('file_input').onchange = function () {
+                    document.getElementById('file_name').innerHTML = this.files[0].name;
+                    document.getElementById('file_name').classList.add('text-navy');
+                };
+            </script>
 
             <div>
                 <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Conteúdo da
