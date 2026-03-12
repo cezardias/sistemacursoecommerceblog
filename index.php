@@ -56,6 +56,10 @@ switch ($url) {
         include 'views/blog.php';
         break;
 
+    case 'quem-somos':
+        include 'views/quem_somos.php';
+        break;
+
     case 'post':
         if (isset($_GET['slug'])) {
             include 'views/blog_post.php';
