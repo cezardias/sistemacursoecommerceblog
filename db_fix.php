@@ -19,18 +19,32 @@ try {
     }
 
     // --- FIX BLOG_POSTS ---
-    // 1. Adicionar coluna 'status' se não existir
-    $check_blog_status = $db->query("SHOW COLUMNS FROM blog_posts LIKE 'status'");
-    if ($check_blog_status->rowCount() == 0) {
-        $db->exec("ALTER TABLE blog_posts ADD COLUMN status VARCHAR(20) DEFAULT 'publicado' AFTER imagem");
-        echo "✅ Coluna 'status' adicionada em 'blog_posts'.<br>";
-    }
+    // 1. Verificar se a tabela existe
+    $db->exec("CREATE TABLE IF NOT EXISTS blog_posts (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        titulo VARCHAR(255) NOT NULL,
+        slug VARCHAR(255) NOT NULL,
+        conteudo TEXT NOT NULL,
+        autor_id INT NOT NULL,
+        imagem VARCHAR(255),
+        status VARCHAR(20) DEFAULT 'publicado',
+        categoria VARCHAR(50) DEFAULT 'Geral',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )");
+    echo "ℹ️ Tabela 'blog_posts' verificada/criada.<br>";
 
-    // 2. Adicionar coluna 'categoria' se não existir
-    $check_blog_cat = $db->query("SHOW COLUMNS FROM blog_posts LIKE 'categoria'");
-    if ($check_blog_cat->rowCount() == 0) {
-        $db->exec("ALTER TABLE blog_posts ADD COLUMN categoria VARCHAR(50) DEFAULT 'Geral' AFTER status");
-        echo "✅ Coluna 'categoria' adicionada em 'blog_posts'.<br>";
+    // 2. Garantir colunas específicas se a tabela já existia mas estava incompleta
+    $columns_to_check = [
+        'status' => "ALTER TABLE blog_posts ADD COLUMN status VARCHAR(20) DEFAULT 'publicado' AFTER imagem",
+        'categoria' => "ALTER TABLE blog_posts ADD COLUMN categoria VARCHAR(50) DEFAULT 'Geral' AFTER status"
+    ];
+
+    foreach ($columns_to_check as $col => $sql) {
+        $check = $db->query("SHOW COLUMNS FROM blog_posts LIKE '$col'");
+        if ($check->rowCount() == 0) {
+            $db->exec($sql);
+            echo "✅ Coluna '$col' adicionada em 'blog_posts'.<br>";
+        }
     }
 
     // 3. Garantir que o Admin existe e tem tudo certo
