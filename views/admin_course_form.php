@@ -161,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="flex-1">
                             <label class="block text-xs text-gray-400 mb-1">Fazer Novo Upload</label>
                             <input type="file" name="imagem_file"
-                                class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange file:text-white hover:file:bg-navy transition">
+                                class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-[#112140] file:text-white hover:file:bg-[#FF7800] transition cursor-pointer">
                         </div>
                         <div class="flex-1">
                             <label class="block text-xs text-gray-400 mb-1">Ou alterar URL manual</label>

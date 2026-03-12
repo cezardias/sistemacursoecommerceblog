@@ -1,11 +1,9 @@
 -- SQL Script to update database for Course Management
--- Run this in your phpMyAdmin SQL tab
+-- Standard MySQL version (without IF NOT EXISTS for columns)
+-- If the columns already exist, these commands will return an error, which you can ignore.
 
--- 1. Ensure the 'imagem' column exists
-ALTER TABLE cursos ADD COLUMN IF NOT EXISTS imagem VARCHAR(255) AFTER categoria;
+-- 1. Add 'imagem' column
+ALTER TABLE cursos ADD COLUMN imagem VARCHAR(255) AFTER categoria;
 
--- 2. Ensure the 'status' column exists
-ALTER TABLE cursos ADD COLUMN IF NOT EXISTS status VARCHAR(20) DEFAULT 'ativo' AFTER imagem;
-
--- 3. Verify columns (Optional)
--- DESCRIBE cursos;
+-- 2. Add 'status' column
+ALTER TABLE cursos ADD COLUMN status VARCHAR(20) DEFAULT 'ativo' AFTER imagem;
