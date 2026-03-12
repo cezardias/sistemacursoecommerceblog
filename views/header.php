@@ -48,7 +48,7 @@
     <nav class="shadow-md sticky top-0 z-50" style="background-color: #f9f8f6;">
         <div class="container mx-auto px-6 py-2 flex justify-between items-center">
             <a href="/index.php?url=home" class="flex items-center">
-                <img src="/assets/images/logo.png?v=1.4" alt="Aula Direta" class="h-20 md:h-28">
+                <img src="/assets/images/logo.png?v=1.5" alt="Aula Direta" class="h-20 md:h-28">
             </a>
 
             <!-- Mobile Menu Button -->
