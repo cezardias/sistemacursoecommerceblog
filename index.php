@@ -60,6 +60,10 @@ switch ($url) {
         include 'views/quem_somos.php';
         break;
 
+    case 'politica-privacidade':
+        include 'views/politica_privacidade.php';
+        break;
+
     case 'post':
         if (isset($_GET['slug'])) {
             include 'views/blog_post.php';

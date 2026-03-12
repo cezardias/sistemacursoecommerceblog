@@ -20,6 +20,8 @@
             <h4 class="text-lg font-bold mb-6">Links Úteis</h4>
             <ul class="space-y-4 text-gray-400">
                 <li><a href="/index.php?url=quem-somos" class="hover:text-white transition">Quem Somos</a></li>
+                <li><a href="/index.php?url=politica-privacidade" class="hover:text-white transition">Política de
+                        Privacidade</a></li>
                 <li><a href="https://api.whatsapp.com/send?phone=5561999361189&text=Olá! Tenho interesse nos Cursos Técnicos."
                         target="_blank" class="hover:text-white transition">Cursos Técnicos</a></li>
                 <li><a href="https://api.whatsapp.com/send?phone=5561999361189&text=Olá! Tenho interesse na Pós-Graduação."
