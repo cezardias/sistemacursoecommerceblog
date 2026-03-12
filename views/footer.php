@@ -34,8 +34,8 @@
         </div>
     </div>
     <div class="border-t border-gray-800 mt-16 pt-8 text-center text-gray-500 text-sm">
-        &copy;
-        <?php echo date('Y'); ?> Aula Direta - Todos os direitos reservados.
+        <p class="mb-2">Av. Paulista, 302 - Bela Vista, São Paulo - SP, 01310-000</p>
+        &copy; <?php echo date('Y'); ?> Aula Direta - Todos os direitos reservados.
     </div>
 </footer>
 </body>
