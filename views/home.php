@@ -69,11 +69,13 @@
                         <div class="mb-6">
                             <p class="text-gray-400 text-xs">À vista por:</p>
                             <p class="text-2xl font-bold text-navy">R$
-                                <?php echo number_format($c['preco_vista'], 2, ',', '.'); ?></p>
+                                <?php echo number_format($c['preco_vista'], 2, ',', '.'); ?>
+                            </p>
                             <p class="text-orange font-medium text-sm">ou <?php echo $c['parcelas']; ?>x de R$
-                                <?php echo number_format($c['preco_parcelado'] / $c['parcelas'], 2, ',', '.'); ?></p>
+                                <?php echo number_format($c['preco_parcelado'] / $c['parcelas'], 2, ',', '.'); ?>
+                            </p>
                         </div>
-                        <a href="https://api.whatsapp.com/send?phone=5561999361189&text=Olá! Gostaria de me matricular no curso: <?php echo urlencode($c['titulo']); ?>"
+                        <a href="https://api.whatsapp.com/send?phone=5511964811689&text=Olá! Gostaria de me matricular no curso: <?php echo urlencode($c['titulo']); ?>"
                             target="_blank"
                             class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition block text-center">Matricule-se</a>
                     </div>

@@ -21,24 +21,24 @@
                 <li><a href="/index.php?url=quem-somos" class="hover:text-white transition">Quem Somos</a></li>
                 <li><a href="/index.php?url=politica-privacidade" class="hover:text-white transition">Política de
                         Privacidade</a></li>
-                <li><a href="https://api.whatsapp.com/send?phone=5561999361189&text=Olá! Tenho interesse nos Cursos Técnicos."
+                <li><a href="https://api.whatsapp.com/send?phone=5511964811689&text=Olá! Tenho interesse nos Cursos Técnicos."
                         target="_blank" class="hover:text-white transition">Cursos Técnicos</a></li>
-                <li><a href="https://api.whatsapp.com/send?phone=5561999361189&text=Olá! Tenho interesse na Pós-Graduação."
+                <li><a href="https://api.whatsapp.com/send?phone=5511964811689&text=Olá! Tenho interesse na Pós-Graduação."
                         target="_blank" class="hover:text-white transition">Pós-Graduação</a></li>
-                <li><a href="https://api.whatsapp.com/send?phone=5561999361189&text=Olá! Gostaria de informações sobre o EJA."
+                <li><a href="https://api.whatsapp.com/send?phone=5511964811689&text=Olá! Gostaria de informações sobre o EJA."
                         target="_blank" class="hover:text-white transition">EJA</a></li>
             </ul>
         </div>
         <div>
             <h4 class="text-lg font-bold mb-6">Suporte</h4>
             <ul class="space-y-4 text-gray-400">
-                <li><a href="https://api.whatsapp.com/send?phone=5561999361189&text=Olá! Preciso de ajuda com o portal."
+                <li><a href="https://api.whatsapp.com/send?phone=5511964811689&text=Olá! Preciso de ajuda com o portal."
                         target="_blank" class="hover:text-white transition">Central de Ajuda</a></li>
-                <li><a href="https://api.whatsapp.com/send?phone=5561999361189&text=Olá! Gostaria de falar com a equipe de atendimento."
+                <li><a href="https://api.whatsapp.com/send?phone=5511964811689&text=Olá! Gostaria de falar com a equipe de atendimento."
                         target="_blank" class="hover:text-white transition">Contato</a>
                     <div class="mt-2 text-xs text-gray-500">
                         CNPJ: 61.843.799/0001-72<br>
-                        Tel: (61) 99936-1189
+                        Tel: (11) 96481-1689
                     </div>
                 </li>
                 <li><a href="/index.php?url=termos-uso" class="hover:text-white transition">Termos de Uso</a></li>
