@@ -117,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             class="w-full bg-gray-50 border border-gray-200 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-orange">
                     </div>
                     <div>
-                        <label class="block text-sm font-bold text-navy mb-2">Preço Parcelado (Total)</label>
+                        <label class="block text-sm font-bold text-navy mb-2">Valor da Parcela (Mensal)</label>
                         <input type="number" step="0.01" name="preco_parcelado" required
                             value="<?php echo $course ? $course['preco_parcelado'] : ''; ?>"
                             class="w-full bg-gray-50 border border-gray-200 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-orange">
