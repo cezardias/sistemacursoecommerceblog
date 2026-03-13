@@ -2,39 +2,42 @@
 
 <!-- Hero Carousel -->
 <?php if (!empty($banners)): ?>
-    <section class="relative bg-navy overflow-hidden w-full">
-        <div class="swiper heroSwiper">
-            <div class="swiper-wrapper">
-                <?php foreach ($banners as $b): ?>
-                    <div class="swiper-slide relative h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px] w-full">
-                        <img src="<?php echo $b['imagem']; ?>" class="w-full h-full object-cover">
-                        <?php if ($b['titulo'] || $b['link']): ?>
-                            <div
-                                class="absolute inset-0 bg-gradient-to-r from-navy/60 via-navy/20 to-transparent flex items-center">
-                                <div class="container mx-auto px-6">
-                                    <div class="max-w-2xl text-white">
-                                        <?php if ($b['titulo']): ?>
-                                            <h2 class="text-4xl md:text-6xl font-bold mb-6 leading-tight"><?php echo $b['titulo']; ?>
-                                            </h2>
-                                        <?php endif; ?>
-                                        <?php if ($b['link']): ?>
-                                            <a href="<?php echo $b['link']; ?>"
-                                                class="bg-orange text-white px-6 py-2 md:px-8 md:py-4 rounded-full font-bold inline-block hover:bg-white hover:text-navy transition shadow-2xl text-xs md:text-base">
-                                                Saiba Mais
-                                            </a>
-                                        <?php endif; ?>
+    <section class="relative bg-navy py-6 md:py-10">
+        <div class="container mx-auto px-6">
+            <div class="swiper heroSwiper rounded-3xl overflow-hidden md:max-w-[75%] mx-auto shadow-2xl">
+                <div class="swiper-wrapper">
+                    <?php foreach ($banners as $b): ?>
+                        <div class="swiper-slide relative h-[150px] sm:h-[200px] md:h-[250px] lg:h-[300px] xl:h-[350px]">
+                            <img src="<?php echo $b['imagem']; ?>" class="w-full h-full object-cover">
+                            <?php if ($b['titulo'] || $b['link']): ?>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-r from-navy/60 via-navy/10 to-transparent flex items-center">
+                                    <div class="px-6 md:px-12">
+                                        <div class="max-w-md text-white">
+                                            <?php if ($b['titulo']): ?>
+                                                <h2 class="text-lg md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4 leading-tight drop-shadow-md">
+                                                    <?php echo $b['titulo']; ?>
+                                                </h2>
+                                            <?php endif; ?>
+                                            <?php if ($b['link']): ?>
+                                                <a href="<?php echo $b['link']; ?>"
+                                                    class="bg-orange text-white px-4 py-1.5 md:px-6 md:py-3 rounded-full font-bold inline-block hover:bg-white hover:text-navy transition shadow-lg text-[10px] md:text-sm">
+                                                    Saiba Mais
+                                                </a>
+                                            <?php endif; ?>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Navigation -->
+                <div class="swiper-button-next !text-white opacity-40 hover:opacity-100 transition scale-75 !hidden md:!flex"></div>
+                <div class="swiper-button-prev !text-white opacity-40 hover:opacity-100 transition scale-75 !hidden md:!flex"></div>
             </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
-            <!-- Add Navigation -->
-            <div class="swiper-button-next !text-white opacity-50 hover:opacity-100 transition"></div>
-            <div class="swiper-button-prev !text-white opacity-50 hover:opacity-100 transition"></div>
         </div>
     </section>
 
