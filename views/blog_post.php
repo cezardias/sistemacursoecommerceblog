@@ -35,14 +35,14 @@ $comments = $commentModel->readByPost($post['id']);
     <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-6 max-w-4xl">
             <span class="text-orange font-bold uppercase tracking-widest text-sm mb-4 block">
-                <?php echo $post['categoria']; ?>
+                <?php echo htmlspecialchars($post['categoria']); ?>
             </span>
             <h1 class="text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight">
-                <?php echo $post['titulo']; ?>
+                <?php echo htmlspecialchars($post['titulo']); ?>
             </h1>
             <div class="flex items-center text-gray-400 text-sm">
                 <span class="font-bold text-navy">
-                    <?php echo $post['autor_nome']; ?>
+                    <?php echo htmlspecialchars($post['autor_nome']); ?>
                 </span>
                 <span class="mx-3">•</span>
                 <span>
@@ -84,7 +84,7 @@ $comments = $commentModel->readByPost($post['id']);
                             <div class="flex justify-between items-start mb-4">
                                 <div>
                                     <h4 class="font-bold text-navy">
-                                        <?php echo $c['usuario_nome']; ?>
+                                        <?php echo htmlspecialchars($c['usuario_nome']); ?>
                                     </h4>
                                     <span class="text-xs text-gray-400">
                                         <?php echo date('d/m/Y H:i', strtotime($c['created_at'])); ?>
@@ -92,14 +92,13 @@ $comments = $commentModel->readByPost($post['id']);
                                 </div>
                             </div>
                             <p class="text-gray-600">
-                                <?php echo nl2br($c['comentario']); ?>
+                                <?php echo nl2br(htmlspecialchars($c['comentario'])); ?>
                             </p>
-
                             <?php if ($c['resposta_admin']): ?>
                                 <div class="mt-6 ml-6 p-6 bg-white rounded-2xl border-l-4 border-orange">
                                     <h5 class="text-sm font-bold text-orange mb-2">Resposta do Admin</h5>
                                     <p class="text-gray-600 text-sm">
-                                        <?php echo nl2br($c['resposta_admin']); ?>
+                                        <?php echo nl2br(htmlspecialchars($c['resposta_admin'])); ?>
                                     </p>
                                 </div>
                             <?php endif; ?>

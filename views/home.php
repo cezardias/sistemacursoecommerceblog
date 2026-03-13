@@ -10,15 +10,12 @@
                         <div class="swiper-slide relative aspect-[2/1] md:aspect-[3/1] w-full bg-navy">
                             <img src="<?php echo $b['imagem']; ?>" class="w-full h-full object-contain">
                             <?php if ($b['titulo'] || $b['link']): ?>
-                                <div
-                                    class="absolute inset-0 bg-navy/20 flex items-center">
+                                <div class="absolute inset-0 bg-navy/20 flex items-center">
                                     <div class="px-6 md:px-12">
                                         <div class="max-w-md text-white drop-shadow-2xl">
-                                            <?php if ($b['titulo']): ?>
-                                                <h2 class="text-lg md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4 leading-tight">
-                                                    <?php echo $b['titulo']; ?>
-                                                </h2>
-                                            <?php endif; ?>
+                                            <h2 class="text-lg md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4 leading-tight">
+                                                <?php echo htmlspecialchars($b['titulo']); ?>
+                                            </h2>
                                             <?php if ($b['link']): ?>
                                                 <a href="<?php echo $b['link']; ?>"
                                                     class="bg-orange text-white px-4 py-1.5 md:px-6 md:py-3 rounded-full font-bold inline-block hover:bg-white hover:text-navy transition shadow-lg text-[10px] md:text-sm">
@@ -35,13 +32,17 @@
                 <!-- Add Pagination -->
                 <div class="swiper-pagination"></div>
                 <!-- Add Navigation -->
-                <div class="swiper-button-next !text-white opacity-40 hover:opacity-100 transition scale-75 !hidden md:!flex"></div>
-                <div class="swiper-button-prev !text-white opacity-40 hover:opacity-100 transition scale-75 !hidden md:!flex"></div>
+                <div
+                    class="swiper-button-next !text-white opacity-40 hover:opacity-100 transition scale-75 !hidden md:!flex">
+                </div>
+                <div
+                    class="swiper-button-prev !text-white opacity-40 hover:opacity-100 transition scale-75 !hidden md:!flex">
+                </div>
             </div>
         </div>
     </section>
 
-    <script>     var swiper = new Swiper(".heroSwiper", {         loop: true,         autoplay: {             delay: 5000,             disableOnInteraction: false,         },         pagination: {             el: ".swiper-pagination",             clickable: true,         },         navigation: {             nextEl: ".swiper-button-next",             prevEl: ".swiper-button-prev",         },     });
+    <script>     var swiper = new Swiper(".heroSwiper", { loop: true, autoplay: { delay: 5000, disableOnInteraction: false, }, pagination: { el: ".swiper-pagination", clickable: true, }, navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev", }, });
     </script>
 
     <style>
@@ -113,16 +114,17 @@
                     class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
                     <div class="h-48 overflow-hidden bg-navy flex items-center justify-center">
                         <?php if ($c['imagem']): ?>
-                            <img src="<?php echo $c['imagem']; ?>" class="w-full h-full object-cover">
+                            <img src="<?php echo htmlspecialchars($c['imagem']); ?>" class="w-full h-full object-cover">
                         <?php else: ?>
                             <div class="text-white text-6xl opacity-20">🎓</div>
                         <?php endif; ?>
                     </div>
                     <div class="p-6">
                         <span
-                            class="text-xs font-bold uppercase tracking-wider text-orange mb-2 block"><?php echo $c['categoria']; ?></span>
-                        <h3 class="text-xl font-bold text-navy mb-3"><?php echo $c['titulo']; ?></h3>
-                        <p class="text-gray-500 text-sm mb-6 line-clamp-2"><?php echo $c['descricao']; ?></p>
+                            class="text-xs font-bold uppercase tracking-wider text-orange mb-2 block"><?php echo htmlspecialchars($c['categoria']); ?></span>
+                        <h3 class="text-xl font-bold text-navy mb-3"><?php echo htmlspecialchars($c['titulo']); ?></h3>
+                        <p class="text-gray-500 text-sm mb-6 line-clamp-2"><?php echo htmlspecialchars($c['descricao']); ?>
+                        </p>
                         <div class="mb-6">
                             <p class="text-gray-400 text-xs">À vista por:</p>
                             <p class="text-2xl font-bold text-navy">R$
@@ -170,7 +172,8 @@
                 <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 group">
                     <div class="h-48 overflow-hidden bg-gray-200">
                         <?php if ($row['imagem']): ?>
-                            <img src="<?php echo $row['imagem']; ?>" alt="<?php echo $row['titulo']; ?>"
+                            <img src="<?php echo htmlspecialchars($row['imagem']); ?>"
+                                alt="<?php echo htmlspecialchars($row['titulo']); ?>"
                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                         <?php else: ?>
                             <div class="flex items-center justify-center h-full text-gray-400 text-5xl">📰</div>
@@ -178,10 +181,10 @@
                     </div>
                     <div class="p-8">
                         <span class="text-xs font-bold text-orange uppercase tracking-widest mb-3 block">
-                            <?php echo $row['categoria']; ?>
+                            <?php echo htmlspecialchars($row['categoria']); ?>
                         </span>
                         <h2 class="text-2xl font-bold text-navy mb-4 group-hover:text-orange transition">
-                            <?php echo $row['titulo']; ?>
+                            <?php echo htmlspecialchars($row['titulo']); ?>
                         </h2>
                         <p class="text-gray-500 mb-6 line-clamp-3">
                             <?php echo strip_tags($row['conteudo']); ?>

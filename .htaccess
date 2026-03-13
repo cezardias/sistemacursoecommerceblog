@@ -1,6 +1,19 @@
 <IfModule mod_rewrite.c>
     Options -Indexes -MultiViews +FollowSymLinks
-    RewriteEngine On
+    # Security Hardening
+Options -Indexes
+Options -FollowSymLinks
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Handle URL Routing
+RewriteEngine On
     RewriteBase /
 
     # If the file or directory exists, use it

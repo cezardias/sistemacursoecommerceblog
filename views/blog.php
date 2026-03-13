@@ -22,7 +22,8 @@ $posts = $blogModel->readAll(true);
                 <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 group">
                     <div class="h-48 overflow-hidden bg-gray-200">
                         <?php if ($row['imagem']): ?>
-                            <img src="<?php echo $row['imagem']; ?>" alt="<?php echo $row['titulo']; ?>"
+                            <img src="<?php echo htmlspecialchars($row['imagem']); ?>"
+                                alt="<?php echo htmlspecialchars($row['titulo']); ?>"
                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                         <?php else: ?>
                             <div class="flex items-center justify-center h-full text-gray-400 text-5xl">📰</div>
@@ -30,10 +31,10 @@ $posts = $blogModel->readAll(true);
                     </div>
                     <div class="p-8">
                         <span class="text-xs font-bold text-orange uppercase tracking-widest mb-3 block">
-                            <?php echo $row['categoria']; ?>
+                            <?php echo htmlspecialchars($row['categoria']); ?>
                         </span>
                         <h2 class="text-2xl font-bold text-navy mb-4 group-hover:text-orange transition">
-                            <?php echo $row['titulo']; ?>
+                            <?php echo htmlspecialchars($row['titulo']); ?>
                         </h2>
                         <p class="text-gray-500 mb-6 line-clamp-3">
                             <?php echo strip_tags($row['conteudo']); ?>
