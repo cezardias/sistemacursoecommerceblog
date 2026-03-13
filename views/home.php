@@ -16,12 +16,6 @@
                                             <h2 class="text-lg md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4 leading-tight">
                                                 <?php echo htmlspecialchars($b['titulo']); ?>
                                             </h2>
-                                            <?php if ($b['link']): ?>
-                                                <a href="<?php echo $b['link']; ?>"
-                                                    class="bg-orange text-white px-4 py-1.5 md:px-6 md:py-3 rounded-full font-bold inline-block hover:bg-white hover:text-navy transition shadow-lg text-[10px] md:text-sm">
-                                                    Saiba Mais
-                                                </a>
-                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>

@@ -67,8 +67,6 @@
             <div class="hidden md:flex space-x-4 items-center">
                 <a href="/index.php?url=cursos"
                     class="bg-navy text-white px-5 py-2 rounded-full hover:bg-orange transition shadow-lg text-sm font-bold">Cursos</a>
-                <a href="#"
-                    class="bg-navy text-white px-5 py-2 rounded-full hover:bg-orange transition shadow-lg text-sm font-bold">EJA</a>
                 <a href="/index.php?url=blog"
                     class="bg-navy text-white px-5 py-2 rounded-full hover:bg-orange transition shadow-lg text-sm font-bold">Blog</a>
 
@@ -114,8 +112,6 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-3">
             <a href="/index.php?url=cursos"
                 class="block bg-navy text-white text-center py-3 rounded-full font-bold shadow-md">Cursos</a>
-            <a href="/index.php?url=eja"
-                class="block bg-navy text-white text-center py-3 rounded-full font-bold shadow-md">EJA</a>
             <a href="/index.php?url=blog"
                 class="block bg-navy text-white text-center py-3 rounded-full font-bold shadow-md">Blog</a>
             <a href="/index.php?url=cart"
