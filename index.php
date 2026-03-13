@@ -101,6 +101,10 @@ switch ($url) {
                     include 'views/admin_courses.php';
                 } elseif ($view == 'course_form') {
                     include 'views/admin_course_form.php';
+                } elseif ($view == 'banners') {
+                    include 'views/admin_banners.php';
+                } elseif ($view == 'banner_form') {
+                    include 'views/admin_banner_form.php';
                 } else {
                     include 'views/dashboard_admin.php';
                 }

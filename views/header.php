@@ -9,6 +9,10 @@
     </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Swiper.js for Carousel -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <style>
         body {
             font-family: 'Outfit', sans-serif;
@@ -141,6 +145,6 @@
     <script>
         document.getElementById('mobile-menu-button').addEventListener('click', function () {
             document.getElementById('mobile-menu').classList.togg
-        le('hidden');
+            le('hidden');
         });
     </script>

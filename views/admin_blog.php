@@ -30,6 +30,7 @@ render_header();
         <nav class="mt-6">
             <a href="/admin" class="block py-3 px-6 hover:bg-white/10 transition">Dashboard</a>
             <a href="/admin?view=blog" class="block py-3 px-6 bg-orange text-white font-bold">Blog</a>
+            <a href="/admin?view=banners" class="block py-3 px-6 hover:bg-white/10 transition">Carrossel</a>
             <a href="/admin?view=comments" class="block py-3 px-6 hover:bg-white/10 transition">Comentários</a>
             <a href="/logout" class="block py-3 px-6 hover:bg-red-500 transition mt-10 text-red-300">Sair</a>
         </nav>

@@ -1,38 +1,105 @@
 <?php render_header(); ?>
 
-<!-- Hero Section -->
-<section class="relative bg-navy overflow-hidden py-20">
-    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10">
-        <div class="md:w-1/2 text-white">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                O seu futuro <span class="text-orange underline">começa aqui.</span>
-            </h1>
-            <p class="text-xl text-gray-300 mb-10 max-w-lg">
-                Desenvolva competências estratégicas e transforme sua forma de liderar com os melhores cursos do
-                mercado.
-            </p>
-            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#cursos"
-                    class="bg-orange text-white px-8 py-4 rounded-full font-bold text-center hover-bg-orange transition shadow-2xl flex items-center justify-center">
-                    Ver Cursos <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round"></path>
-                    </svg>
-                </a>
-                <a href="#cursos"
-                    class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-center hover:bg-white hover:text-navy transition">
-                    Saiba Mais
-                </a>
+<!-- Hero Carousel -->
+<?php if (!empty($banners)): ?>
+    <section class="relative bg-navy overflow-hidden">
+        <div class="swiper heroSwiper">
+            <div class="swiper-wrapper">
+                <?php foreach ($banners as $b): ?>
+                    <div class="swiper-slide relative h-[500px] md:h-[600px]">
+                        <img src="<?php echo $b['imagem']; ?>" class="w-full h-full object-cover">
+                        <?php if ($b['titulo'] || $b['link']): ?>
+                            <div class="absolute inset-0 bg-gradient-to-r from-navy/80 to-transparent flex items-center">
+                                <div class="container mx-auto px-6">
+                                    <div class="max-w-2xl text-white">
+                                        <?php if ($b['titulo']): ?>
+                                            <h2 class="text-4xl md:text-6xl font-bold mb-6 leading-tight"><?php echo $b['titulo']; ?>
+                                            </h2>
+                                        <?php endif; ?>
+                                        <?php if ($b['link']): ?>
+                                            <a href="<?php echo $b['link']; ?>"
+                                                class="bg-orange text-white px-8 py-4 rounded-full font-bold inline-block hover:bg-white hover:text-navy transition shadow-2xl">
+                                                Saiba Mais
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-next !text-white opacity-50 hover:opacity-100 transition"></div>
+            <div class="swiper-button-prev !text-white opacity-50 hover:opacity-100 transition"></div>
+        </div>
+    </section>
+
+    <script>
+        var swiper = new Swiper(".heroSwiper", {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+
+    <style>
+        .swiper-pagination-bullet {
+            background: #fff;
+            opacity: 0.5;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #F97316;
+            opacity: 1;
+        }
+    </style>
+<?php else: ?>
+    <!-- Hero Section (Fallback) -->
+    <section class="relative bg-navy overflow-hidden py-20">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10">
+            <div class="md:w-1/2 text-white">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    O seu futuro <span class="text-orange underline">começa aqui.</span>
+                </h1>
+                <p class="text-xl text-gray-300 mb-10 max-w-lg">
+                    Desenvolva competências estratégicas e transforme sua forma de liderar com os melhores cursos do
+                    mercado.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#cursos"
+                        class="bg-orange text-white px-8 py-4 rounded-full font-bold text-center hover-bg-orange transition shadow-2xl flex items-center justify-center">
+                        Ver Cursos <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg>
+                    </a>
+                    <a href="#cursos"
+                        class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-center hover:bg-white hover:text-navy transition">
+                        Saiba Mais
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 mt-12 md:mt-0 relative">
+                <div class="absolute -top-10 -right-10 w-64 h-64 bg-orange opacity-10 rounded-full blur-3xl"></div>
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="Estudante" class="rounded-3xl shadow-2xl border-8 border-navy/50">
             </div>
         </div>
-        <div class="md:w-1/2 mt-12 md:mt-0 relative">
-            <div class="absolute -top-10 -right-10 w-64 h-64 bg-orange opacity-10 rounded-full blur-3xl"></div>
-            <!-- Idealmente uma das imagens enviadas aqui -->
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Estudante" class="rounded-3xl shadow-2xl border-8 border-navy/50">
-        </div>
-    </div>
-</section>
+    </section>
+<?php endif; ?>
 
 <!-- Courses Grid -->
 <section id="cursos" class="py-24">
