@@ -1,4 +1,9 @@
 <?php
+$error = isset($_SESSION['error']) ? $_SESSION['error'] : "";
+$msg = isset($_SESSION['msg']) ? $_SESSION['msg'] : "";
+unset($_SESSION['error']);
+unset($_SESSION['msg']);
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_POST['senha'])) {
     require_once 'models/User.php';
     $userModel = new User($db);
@@ -41,7 +46,13 @@ render_header();
 
         <?php if ($error): ?>
             <div class="bg-red-50 text-red-700 p-4 rounded-xl text-sm border border-red-100 italic">
-                <?php echo $error; ?>
+                <?php echo htmlspecialchars($error); ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($msg): ?>
+            <div class="bg-green-50 text-green-700 p-4 rounded-xl text-sm border border-green-100 italic">
+                <?php echo htmlspecialchars($msg); ?>
             </div>
         <?php endif; ?>
 
