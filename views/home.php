@@ -7,15 +7,15 @@
             <div class="swiper heroSwiper rounded-3xl overflow-hidden md:max-w-[75%] mx-auto shadow-2xl">
                 <div class="swiper-wrapper">
                     <?php foreach ($banners as $b): ?>
-                        <div class="swiper-slide relative h-[150px] sm:h-[200px] md:h-[250px] lg:h-[300px] xl:h-[350px]">
-                            <img src="<?php echo $b['imagem']; ?>" class="w-full h-full object-cover">
+                        <div class="swiper-slide relative aspect-[2/1] md:aspect-[3/1] w-full bg-navy">
+                            <img src="<?php echo $b['imagem']; ?>" class="w-full h-full object-contain">
                             <?php if ($b['titulo'] || $b['link']): ?>
                                 <div
-                                    class="absolute inset-0 bg-gradient-to-r from-navy/60 via-navy/10 to-transparent flex items-center">
+                                    class="absolute inset-0 bg-navy/20 flex items-center">
                                     <div class="px-6 md:px-12">
-                                        <div class="max-w-md text-white">
+                                        <div class="max-w-md text-white drop-shadow-2xl">
                                             <?php if ($b['titulo']): ?>
-                                                <h2 class="text-lg md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4 leading-tight drop-shadow-md">
+                                                <h2 class="text-lg md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4 leading-tight">
                                                     <?php echo $b['titulo']; ?>
                                                 </h2>
                                             <?php endif; ?>
