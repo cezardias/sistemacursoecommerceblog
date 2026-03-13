@@ -61,7 +61,7 @@
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-4 items-center">
-                <a href="/index.php?url=home#cursos"
+                <a href="/index.php?url=cursos"
                     class="bg-navy text-white px-5 py-2 rounded-full hover:bg-orange transition shadow-lg text-sm font-bold">Cursos</a>
                 <a href="#"
                     class="bg-navy text-white px-5 py-2 rounded-full hover:bg-orange transition shadow-lg text-sm font-bold">EJA</a>
@@ -108,7 +108,7 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-3">
-            <a href="/index.php?url=home#cursos"
+            <a href="/index.php?url=cursos"
                 class="block bg-navy text-white text-center py-3 rounded-full font-bold shadow-md">Cursos</a>
             <a href="/index.php?url=eja"
                 class="block bg-navy text-white text-center py-3 rounded-full font-bold shadow-md">EJA</a>
@@ -126,7 +126,7 @@
             <?php else: ?>
                 <a href="/index.php?url=login"
                     class="block bg-navy text-white text-center py-3 rounded-full font-bold shadow-md">Entrar</a>
-                <a href="/index.php?url=home#cursos"
+                <a href="/index.php?url=cursos"
                     class="block bg-navy text-white text-center py-3 rounded-full font-bold shadow-md flex items-center justify-center space-x-2">
                     <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                         <path

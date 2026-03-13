@@ -43,7 +43,8 @@
                         class="text-orange">Especialidades</span></h2>
                 <p class="text-gray-600 max-w-md">Os melhores investimentos para sua carreira profissional.</p>
             </div>
-            <a href="#" class="text-navy font-bold hover:text-orange transition mt-4 md:mt-0 flex items-center">
+            <a href="/index.php?url=cursos"
+                class="text-navy font-bold hover:text-orange transition mt-4 md:mt-0 flex items-center">
                 Ver Todos <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
@@ -87,6 +88,64 @@
                     </div>
                 </div>
             <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Section -->
+<section class="py-24 bg-gray-50 border-t border-gray-100">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+            <div>
+                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Últimas do <span
+                        class="text-orange">Blog</span></h2>
+                <p class="text-gray-600 max-w-md">Fique por dentro das novidades e dicas de carreira.</p>
+            </div>
+            <a href="/index.php?url=blog"
+                class="bg-navy text-white px-6 py-2 rounded-full font-bold hover:bg-orange transition mt-4 md:mt-0 flex items-center shadow-lg">
+                Ir para o Blog <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <?php while ($row = $posts->fetch(PDO::FETCH_ASSOC)): ?>
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 group">
+                    <div class="h-48 overflow-hidden bg-gray-200">
+                        <?php if ($row['imagem']): ?>
+                            <img src="<?php echo $row['imagem']; ?>" alt="<?php echo $row['titulo']; ?>"
+                                class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <?php else: ?>
+                            <div class="flex items-center justify-center h-full text-gray-400 text-5xl">📰</div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="p-8">
+                        <span class="text-xs font-bold text-orange uppercase tracking-widest mb-3 block">
+                            <?php echo $row['categoria']; ?>
+                        </span>
+                        <h2 class="text-2xl font-bold text-navy mb-4 group-hover:text-orange transition">
+                            <?php echo $row['titulo']; ?>
+                        </h2>
+                        <p class="text-gray-500 mb-6 line-clamp-3">
+                            <?php echo strip_tags($row['conteudo']); ?>
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-400">
+                                <?php echo date('d/m/Y', strtotime($row['created_at'])); ?>
+                            </span>
+                            <a href="/post?slug=<?php echo $row['slug']; ?>"
+                                class="text-navy font-bold hover:text-orange flex items-center">
+                                Ler mais
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <?php endwhile; ?>
         </div>
     </div>
 </section>

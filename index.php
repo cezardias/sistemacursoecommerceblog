@@ -33,9 +33,19 @@ switch ($url) {
     case 'home':
     case '':
         include 'models/Course.php';
+        include 'models/BlogPost.php';
+        $courseModel = new Course($db);
+        $blogModel = new BlogPost($db);
+        $courses = $courseModel->getAll(true, 4);
+        $posts = $blogModel->readAll(true, 3);
+        include 'views/home.php';
+        break;
+
+    case 'cursos':
+        include 'models/Course.php';
         $courseModel = new Course($db);
         $courses = $courseModel->getAll(true);
-        include 'views/home.php';
+        include 'views/cursos.php';
         break;
 
     case 'login':

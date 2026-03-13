@@ -28,7 +28,7 @@ class BlogPost
         return $stmt->execute([$this->titulo, $this->slug, $this->conteudo, $this->autor_id, $this->imagem, $this->status, $this->categoria]);
     }
 
-    public function readAll($published_only = false)
+    public function readAll($published_only = false, $limit = null)
     {
         $query = "SELECT p.*, u.nome as autor_nome FROM " . $this->table_name . " p 
                   JOIN usuarios u ON p.autor_id = u.id";
@@ -36,6 +36,11 @@ class BlogPost
             $query .= " WHERE p.status = 'publicado'";
         }
         $query .= " ORDER BY p.created_at DESC";
+
+        if ($limit) {
+            $query .= " LIMIT " . (int) $limit;
+        }
+
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;

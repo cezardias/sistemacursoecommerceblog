@@ -12,13 +12,18 @@ class Course
         $this->conn = $db;
     }
 
-    public function getAll($only_active = false)
+    public function getAll($only_active = false, $limit = null)
     {
         $query = "SELECT * FROM " . $this->table_name;
         if ($only_active) {
             $query .= " WHERE status = 'ativo'";
         }
         $query .= " ORDER BY id DESC";
+
+        if ($limit) {
+            $query .= " LIMIT " . (int) $limit;
+        }
+
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
