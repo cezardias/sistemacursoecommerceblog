@@ -90,7 +90,7 @@
                 <?php else: ?>
                     <a href="/index.php?url=login" class="text-navy hover:text-orange transition">Entrar</a>
                     <a href="https://wa.me/5511964811689?text=Olá! Gostaria de me matricular em um curso." target="_blank"
-                        class="bg-orange text-white px-6 py-2 rounded-full hover-bg-orange transition shadow-lg">Matricule-se</a>
+                        class="bg-navy text-white px-6 py-2 rounded-full hover:bg-orange transition shadow-lg">Matricule-se</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -108,7 +108,7 @@
             <?php else: ?>
                 <a href="/index.php?url=login" class="block text-navy font-bold">Entrar</a>
                 <a href="/index.php?url=home#cursos"
-                    class="block bg-orange text-white text-center py-3 rounded-xl font-bold">Matricule-se</a>
+                    class="block bg-navy text-white text-center py-3 rounded-full font-bold shadow-md">Matricule-se</a>
             <?php endif; ?>
         </div>
     </nav>
