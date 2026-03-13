@@ -72,7 +72,7 @@
                                 <?php echo number_format($c['preco_vista'], 2, ',', '.'); ?>
                             </p>
                             <p class="text-orange font-medium text-sm">ou <?php echo $c['parcelas']; ?>x de R$
-                                <?php echo number_format($c['preco_parcelado'], 2, ',', '.'); ?>
+                                <?php echo number_format($c['preco_parcelado'] ?? 0, 2, ',', '.'); ?>
                             </p>
                         </div>
                         <a href="https://api.whatsapp.com/send?phone=5511964811689&text=Olá! Gostaria de me matricular no curso: <?php echo urlencode($c['titulo']); ?>"
