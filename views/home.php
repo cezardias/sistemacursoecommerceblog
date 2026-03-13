@@ -19,7 +19,7 @@
                             stroke-linejoin="round"></path>
                     </svg>
                 </a>
-                <a href="#"
+                <a href="#cursos"
                     class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-center hover:bg-white hover:text-navy transition">
                     Saiba Mais
                 </a>
@@ -77,7 +77,13 @@
                         </div>
                         <a href="https://api.whatsapp.com/send?phone=5511964811689&text=Olá! Gostaria de me matricular no curso: <?php echo urlencode($c['titulo']); ?>"
                             target="_blank"
-                            class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition block text-center">Matricule-se</a>
+                            class="w-full bg-navy text-white py-3 rounded-xl font-bold hover:bg-orange transition flex items-center justify-center space-x-2">
+                            <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12c0 2.17.7 4.19 1.94 5.86L2.83 22l4.27-1.13C8.61 21.57 10.25 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.11 14.5c-.19 0-.36-.02-.49-.06-.3-.09-.59-.2-.84-.33-.61-.31-1.17-.74-1.63-1.21-.47-.46-.9-1.02-1.21-1.63-.13-.25-.24-.54-.33-.84-.04-.13-.06-.3-.06-.49 0-.25.07-.47.21-.66.11-.15.26-.3.42-.42.06-.05.11-.09.16-.13.11-.09.19-.18.25-.26.06-.08.1-.17.13-.27.03-.1.05-.19.05-.28 0-.11-.02-.21-.06-.3-.04-.09-.12-.19-.24-.31L10.2 9.06c-.1-.1-.2-.17-.31-.22-.11-.05-.23-.07-.37-.07-.15 0-.29.02-.42.07-.14.05-.27.11-.38.19-.11.08-.21.18-.28.28-.07.1-.11.19-.13.27l-.02.09c-.06.28-.09.58-.09.89 0 .61.12 1.15.35 1.62.24.47.57.97.98 1.48.41.51.91 1.01 1.48 1.48.51.41 1.01.74 1.48.98.47.23 1.01.35 1.62.35.31 0 .61-.03.89-.09l.09-.02c.08-.02.17-.06.27-.13.1-.07.2-.17.28-.28.08-.11.14-.24.19-.38.05-.13.07-.27.07-.42 0-.14-.02-.26-.07-.37-.05-.11-.12-.21-.22-.31l-1.64-1.64c-.12-.12-.22-.2-.31-.24-.09-.04-.19-.06-.3-.06-.09 0-.18.02-.28.05-.1.03-.19.07-.27.13-.08.06-.17.14-.26.25-.04.05-.08.1-.13.16-.12.16-.27.31-.42.42-.19.14-.41.21-.66.21z" />
+                            </svg>
+                            <span>Matricule-se</span>
+                        </a>
                     </div>
                 </div>
             <?php endforeach; ?>
