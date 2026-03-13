@@ -60,13 +60,13 @@
             </button>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-8 items-center font-medium">
-                <a href="/index.php?url=home#cursos" class="hover:text-orange transition text-navy">Cursos</a>
-                <a href="#" class="hover:text-orange transition text-navy">EJA</a>
-                <a href="/index.php?url=blog" class="hover:text-orange transition text-navy">Blog</a>
+            <div class="hidden md:flex space-x-4 items-center">
+                <a href="/index.php?url=home#cursos" class="bg-navy text-white px-5 py-2 rounded-full hover:bg-orange transition shadow-lg text-sm font-bold">Cursos</a>
+                <a href="#" class="bg-navy text-white px-5 py-2 rounded-full hover:bg-orange transition shadow-lg text-sm font-bold">EJA</a>
+                <a href="/index.php?url=blog" class="bg-navy text-white px-5 py-2 rounded-full hover:bg-orange transition shadow-lg text-sm font-bold">Blog</a>
 
-                <a href="/index.php?url=cart" class="relative group">
-                    <svg class="w-6 h-6 text-navy group-hover:text-orange transition" fill="none" stroke="currentColor"
+                <a href="/index.php?url=cart" class="relative group bg-navy p-2 rounded-full hover:bg-orange transition shadow-lg">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24">
                         <path
                             d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
@@ -85,10 +85,10 @@
 
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <a href="/index.php?url=admin"
-                        class="bg-navy text-white px-5 py-2 rounded-full hover:bg-orange transition shadow-lg">Painel</a>
-                    <a href="/index.php?url=logout" class="text-gray-500 hover:text-red-550 transition ml-2">Sair</a>
+                        class="bg-navy text-white px-5 py-2 rounded-full hover:bg-orange transition shadow-lg font-bold">Painel</a>
+                    <a href="/index.php?url=logout" class="bg-red-500 text-white px-5 py-2 rounded-full hover:bg-red-600 transition shadow-lg font-bold">Sair</a>
                 <?php else: ?>
-                    <a href="/index.php?url=login" class="text-navy hover:text-orange transition">Entrar</a>
+                    <a href="/index.php?url=login" class="bg-navy text-white px-5 py-2 rounded-full hover:bg-orange transition shadow-lg font-bold">Entrar</a>
                     <a href="https://wa.me/5511964811689?text=Olá! Gostaria de me matricular em um curso." target="_blank"
                         class="bg-navy text-white px-6 py-2 rounded-full hover:bg-orange transition shadow-lg">Matricule-se</a>
                 <?php endif; ?>
@@ -96,17 +96,17 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4">
-            <a href="/index.php?url=home#cursos" class="block text-navy font-medium">Cursos</a>
-            <a href="/index.php?url=eja" class="block text-navy font-medium">EJA</a>
-            <a href="/index.php?url=blog" class="block text-navy font-medium">Blog</a>
-            <a href="/index.php?url=cart" class="block text-navy font-medium">Carrinho (<?php echo $total_items; ?>)</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-3">
+            <a href="/index.php?url=home#cursos" class="block bg-navy text-white text-center py-3 rounded-full font-bold shadow-md">Cursos</a>
+            <a href="/index.php?url=eja" class="block bg-navy text-white text-center py-3 rounded-full font-bold shadow-md">EJA</a>
+            <a href="/index.php?url=blog" class="block bg-navy text-white text-center py-3 rounded-full font-bold shadow-md">Blog</a>
+            <a href="/index.php?url=cart" class="block bg-navy text-white text-center py-3 rounded-full font-bold shadow-md">Carrinho (<?php echo $total_items; ?>)</a>
             <hr>
             <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="/index.php?url=admin" class="block text-navy font-bold">Meu Painel</a>
-                <a href="/index.php?url=logout" class="block text-red-500 font-bold">Sair</a>
+                <a href="/index.php?url=admin" class="block bg-navy text-white text-center py-3 rounded-full font-bold shadow-md">Meu Painel</a>
+                <a href="/index.php?url=logout" class="block bg-red-500 text-white text-center py-3 rounded-full font-bold shadow-md">Sair</a>
             <?php else: ?>
-                <a href="/index.php?url=login" class="block text-navy font-bold">Entrar</a>
+                <a href="/index.php?url=login" class="block bg-navy text-white text-center py-3 rounded-full font-bold shadow-md">Entrar</a>
                 <a href="/index.php?url=home#cursos"
                     class="block bg-navy text-white text-center py-3 rounded-full font-bold shadow-md">Matricule-se</a>
             <?php endif; ?>
