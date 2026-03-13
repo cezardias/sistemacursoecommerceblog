@@ -14,7 +14,9 @@ if ($id) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $titulo = $_POST['titulo'];
     $descricao = $_POST['descricao'];
-    $preco_vista = $_POST['preco_vista'];
+    // Ensure numbers use dot instead of comma
+    $preco_vista = str_replace(',', '.', $_POST['preco_vista']);
+    $preco_parcelado = str_replace(',', '.', $_POST['preco_parcelado']);
     $parcelas = $_POST['parcelas'];
     $categoria = $_POST['categoria'];
     $status = $_POST['status'] ?? 'ativo';
