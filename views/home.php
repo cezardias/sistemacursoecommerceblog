@@ -2,14 +2,15 @@
 
 <!-- Hero Carousel -->
 <?php if (!empty($banners)): ?>
-    <section class="relative bg-navy overflow-hidden">
+    <section class="relative bg-navy overflow-hidden w-full">
         <div class="swiper heroSwiper">
             <div class="swiper-wrapper">
                 <?php foreach ($banners as $b): ?>
-                    <div class="swiper-slide relative h-[500px] md:h-[600px]">
+                    <div class="swiper-slide relative h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px] w-full">
                         <img src="<?php echo $b['imagem']; ?>" class="w-full h-full object-cover">
                         <?php if ($b['titulo'] || $b['link']): ?>
-                            <div class="absolute inset-0 bg-gradient-to-r from-navy/80 to-transparent flex items-center">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-navy/60 via-navy/20 to-transparent flex items-center">
                                 <div class="container mx-auto px-6">
                                     <div class="max-w-2xl text-white">
                                         <?php if ($b['titulo']): ?>
@@ -18,7 +19,7 @@
                                         <?php endif; ?>
                                         <?php if ($b['link']): ?>
                                             <a href="<?php echo $b['link']; ?>"
-                                                class="bg-orange text-white px-8 py-4 rounded-full font-bold inline-block hover:bg-white hover:text-navy transition shadow-2xl">
+                                                class="bg-orange text-white px-6 py-2 md:px-8 md:py-4 rounded-full font-bold inline-block hover:bg-white hover:text-navy transition shadow-2xl text-xs md:text-base">
                                                 Saiba Mais
                                             </a>
                                         <?php endif; ?>
@@ -37,22 +38,7 @@
         </div>
     </section>
 
-    <script>
-        var swiper = new Swiper(".heroSwiper", {
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
+    <script>     var swiper = new Swiper(".heroSwiper", {         loop: true,         autoplay: {             delay: 5000,             disableOnInteraction: false,         },         pagination: {             el: ".swiper-pagination",             clickable: true,         },         navigation: {             nextEl: ".swiper-button-next",             prevEl: ".swiper-button-prev",         },     });
     </script>
 
     <style>
