@@ -90,7 +90,7 @@ render_header();
                         <?php echo $c['comentario']; ?>"
                     </p>
 
-                    <?php if ($c['resposta_admin']): ?>
+                    <?php if (isset($c['resposta_admin']) && $c['resposta_admin']): ?>
                         <div class="mt-4 p-4 bg-orange/5 border-l-4 border-orange rounded-r-xl">
                             <span class="text-[10px] font-bold text-orange uppercase block mb-1">Sua Resposta:</span>
                             <p class="text-sm text-gray-600">
