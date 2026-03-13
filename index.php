@@ -34,10 +34,13 @@ switch ($url) {
     case '':
         include 'models/Course.php';
         include 'models/BlogPost.php';
+        include 'models/Banner.php';
         $courseModel = new Course($db);
         $blogModel = new BlogPost($db);
+        $bannerModel = new Banner($db);
         $courses = $courseModel->getAll(true, 4);
         $posts = $blogModel->readAll(true, 3);
+        $banners = $bannerModel->getAll(true);
         include 'views/home.php';
         break;
 
